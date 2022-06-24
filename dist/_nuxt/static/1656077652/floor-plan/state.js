@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Fdviga\u002F_nuxt\u002Fstatic\u002F1656077652",layout:"default",error:a,serverRendered:true,routePath:"\u002Ffloor-plan",config:{_app:{basePath:"\u002Fdviga\u002F",assetsPath:"\u002Fdviga\u002F_nuxt\u002F",cdnURL:a}}}}(null));
