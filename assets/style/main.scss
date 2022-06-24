@@ -1,0 +1,138 @@
+@import "variables";
+@import "colors";
+
+//fonts Jost
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400');
+
+@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
+
+body{
+  padding: 0;
+  margin: 0;
+  color: $white-color;
+  fill: $white-color;
+
+  font-size: clamp(0.7rem, 1.5vw, 1rem);
+  font-family: Jost, serif;
+  font-style: normal;
+
+  cursor: default;
+}
+
+svg{
+  width: clamp(10px, 3vw, 23px);
+  height: clamp(10px, 3vw, 23px);
+}
+
+::-webkit-scrollbar{
+  width: 0px;
+}
+
+
+.text{
+
+  &-select{
+    text-decoration: none !important;
+    color: $white-color;
+    align-items: center;
+
+    &:hover{
+      color: $accent-color !important;
+      fill: $accent-color !important;
+      cursor: pointer;
+    }
+    &:active{
+      opacity: 0.6;
+    }
+  }
+}
+
+
+.select-item{
+
+  text-decoration: none !important;
+  color: rgba($white-color,0.5);
+  fill: rgba($white-color,0.5);
+  align-items: center;
+
+  &__selected{
+    fill: $accent-color;
+  }
+
+  &:hover{
+    color: $white-color !important;
+    fill: $white-color !important;
+    cursor: pointer;
+  }
+  &:active{
+    opacity: 0.7;
+  }
+}
+
+.svg-dark{
+  fill: $gray;
+  min-width: 20px;
+
+  &-over{
+    fill: $one-base-color;
+  }
+
+  &:hover{
+    opacity: 0.5;
+  }
+
+  &:active{
+    opacity: 0.8;
+  }
+}
+
+.splitter{
+  border: 0.5px solid $lines-color;
+  border-radius: 2px;
+  background-color: $lines-color;
+}
+
+.splitter-vertical{
+  border: 0.5px solid $lines-color;
+  border-radius: 2px;
+  height: 100%;
+  min-height: 100px;
+  background-color: $lines-color;
+}
+
+.normal-padding{
+  padding: clamp(1px, 1vw, 8px) clamp(2px, 1vw, 8px);
+  gap: clamp(0px, 1vw, 8px);
+}
+
+.icon-scalable{
+  width: clamp(10px, 3vw, 25px);
+  height: clamp(10px, 3vw, 25px);
+}
+
+.font-gilroy{
+  font-family: Gilroy, sans-serif;
+}
+
+.no-gap{
+  display: flex;
+  gap: 0px !important;
+}
+
+.opacity05{
+  opacity: 0.5;
+}
+
+.opacity025{
+  opacity: 0.25;
+}
+
+.nuxt-link-exact-active {
+  background: none;
+}
+
+.style-none{
+  background: none;
+  text-decoration: none !important;
+  fill: $white-color;
+}

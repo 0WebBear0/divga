@@ -1,0 +1,49 @@
+@import "variables";
+
+
+.color{
+  &-base{
+    color: $one-base-color;
+  }
+
+  &-base-darker{
+    color: $one-base-darker-color;
+  }
+
+  &-white{
+    color: $white-color
+  }
+
+  &-select{
+    color: $select-text-color;
+  }
+
+  &-accent{
+    color: $accent-color;
+  }
+
+  &-lines{
+    color: $lines-color;
+  }
+
+  &-blue{
+    color: $favorites-line;
+  }
+
+  &-gray{
+    color: $gray;
+  }
+
+  &-green_bg{
+    background-color: $green;
+  }
+
+  &-red_bg{
+    background-color: $red;
+  }
+
+  &-gray_bg{
+    background-color: $gray;
+  }
+
+}

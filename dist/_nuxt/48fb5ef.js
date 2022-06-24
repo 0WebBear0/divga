@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{407:function(n,t,e){"use strict";e.r(t),e.d(t,"HelperWithEndWord",(function(){return r}));var o=e(29),c=e(28),r=Object(o.a)((function n(t){var e=t.countElements;Object(c.a)(this,n),this._countElements=e}));r.endWord=function(n){return n%10&&11!==n&&12!==n&&13!==n&&14!==n?1===(n%=10)?"a":2===n||3===n||4===n?"ы":"":""}}}]);
