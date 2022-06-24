@@ -14,12 +14,20 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: "stylesheet",
+        href: 'https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400',
+      },
+      {
+        rel: "stylesheet",
+        href: 'http://fonts.cdnfonts.com/css/gilroy-bold',
+      },
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@assets/style/main.scss'],
+  css: ['~/assets/style/main.scss'],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],

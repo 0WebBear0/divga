@@ -1,7 +1,7 @@
 <template>
-  <div class="favorite normal-padding text-select" :class="{'favorite__empty': favorite.count === 0}">
-    <IconHearth class="icon-scalable favorite-icon"/>
-    <div class="favorite-text">Избранное {{favorite.count === 0 ? '' : `(${favorite.count})`}}</div>
+  <div class="favorite-b normal-padding text-select" :class="{'favorite-b__empty': favorite.count === 0}">
+    <IconHearth class="icon-scalable favorite-b-icon"/>
+    <div class="favorite-b-text">Избранное {{favorite.count === 0 ? '' : `(${favorite.count})`}}</div>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 @import "../../../assets/style/variables";
 
-.favorite{
+.favorite-b{
   background: $one-base-darker-color;
   border-radius: 100px;
   white-space: nowrap;
@@ -38,6 +38,8 @@ export default Vue.extend({
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
+  gap: clamp(1px, 1vw, 8px);
+
   width: 100%;
   min-width: 95px;
   padding-left: 20px;

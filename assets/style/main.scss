@@ -17,6 +17,8 @@ body{
   font-style: normal;
 
   cursor: default;
+
+  
 }
 
 svg{
@@ -102,7 +104,6 @@ svg{
 
 .normal-padding{
   padding: clamp(1px, 1vw, 8px) clamp(2px, 1vw, 8px);
-  gap: clamp(0px, 1vw, 8px);
 }
 
 .icon-scalable{
