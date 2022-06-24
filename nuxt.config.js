@@ -52,6 +52,6 @@ export default {
   build: {
   },
   router: {
-    base: '/dviga/'
+    base: '/'
   }
 }
