@@ -1,75 +1,80 @@
 <template>
-  <div class="parameters">
-    <Header>
-      <div class="parameters__header">
-        <TextWithLabel text="Найдено:" :text-body="['27 квартир']" />
-        <TextWithLabel item-id="sort" text="Сортировка:" :popup-item="popup" :text-body="['Цена по возрастанию']" />
+  <div class="apartment">
 
-        <UsersView text="Вид" @clicked="(data) => this.typeRender = data" />
+    <!-- header -->
+    <div class="apartment__header">
 
-        <nuxt-link to="favorites" class="style-none"><Favorites :favorite="{count: 1}"/></nuxt-link>
-      </div>
-    </Header>
+      <div class="apartment__info">
 
-    <div class="parameters__body">
-      <FilterPicker class="parameters__body__filter"/>
-      <div class="font-gilroy w-100">
-        <div v-if="typeRender" class="parameters__body__cards__vertical">
-          <div v-for="(item,index) in cardInfo">
-            <CardVertical
-              :card-info="item"
-              class="parameters__body__cards__vertical-card"
-              @click.native="$router.push('apartment/' + index)"
-            />
-          </div>
+        <div class="apartment__info__nav-bar">
+            Главная <span class="opacity05">/</span> Выбор квартиры <span class="opacity05">/</span> <span class="opacity05">2 комнатная #489</span>
         </div>
-        <div v-else class="parameters__body__cards__horizontal">
-          <div v-for="(item, index) in cardInfo">
-            <CardHorizontal
-              :card-info="item"
-              @click.native="$router.push('apartment/' + index)"
-            />
+
+        <div class="apartment__info__price">
+
+          <div class="apartment__info__price_box-name">
+            <div class="apartment__info__price_name">2 комнатная #489</div>
+            <Favorites :favorite="{count: 1}" class="color-base_bg select-item " />
           </div>
+
+          <MultiElement :selectors="[{name: 'Два санузла'},{name: 'Лоджия'},{name: 'Чистовая отделка'}]" />
+
+          <div>
+            <div class="apartment__info__price_crossed">
+              15 000 000 ₽
+            </div>
+            <div class="apartment__info__price_per-meter">
+              <div>
+                <b>15 000 000 ₽</b>
+              </div>
+
+              <div class="opacity05"> 2 222 / M<sup>2</sup></div>
+            </div>
+          </div>
+
+          <div class="splitter opacity05"></div>
+        </div>
+
+      </div>
+
+      <div class="apartment__card text-dark">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias asperiores autem, doloribus earum eveniet impedit iusto laborum qui quia quod rem rerum, sed, tempore vel veritatis vitae voluptate voluptatibus voluptatum.
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="apartment__footer">
+      <div class="pb-5 justify-content-between">
+        <div>Похожие квартиры</div>
+          arrows
+      </div>
+
+      <div class="apartment__footer_card-box">
+        <div v-for="(item,index) in cardInfo">
+          <CardVertical
+            :card-info="item"
+            class="apartment__footer_card"
+            @click.native="$router.push(index)"
+          />
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
-import Header from "@/components/UI/multiComponenets/Header";
-import LinkedList from "@/components/UI/basic/LinkedList";
 import Favorites from "@/components/UI/basic/Favorites";
-import TextWithLabel from "@/components/UI/basic/TextWithLabel";
-import UsersView from "@/components/UI/multiComponenets/UsersView";
-import IconSortedUp from "@/components/icon/IconSortedUp";
-import IconSortedDown from "@/components/icon/IconSortedDown";
-import FilterPicker from "@/components/UI/multiComponenets/FilterPicker";
+import MultiElement from "@/components/UI/basic/MultiElement";
 import CardVertical from "@/components/UI/multiComponenets/CardVertical";
-import CardHorizontal from "@/components/UI/multiComponenets/CardHorizontal";
-
-
 export default {
-  name: "parameters",
-
-  components: {CardHorizontal, CardVertical, FilterPicker, UsersView, TextWithLabel, Favorites, LinkedList, Header},
+  name: "_id",
+  components: {CardVertical, MultiElement, Favorites},
+  layout: ctx => 'empty',
 
   data(){
     return{
-      typeRender: true,
-      found: [
-        {ItemSelected: true, ItemName: '27 квартир', ItemLink: false},
-      ],
-      sorted: [
-        {ItemSelected: true, ItemName: 'Цена по возрастанию', ItemLink: false},
-      ],
-      popup: [
-        {name: 'Цена по возрастанию', icon: 'IconSortedUp' },
-        {name: 'Цена по убыванию', icon: 'IconSortedDown' },
-        {name: 'Площадь по возрастанию', icon: 'IconSortedUp' },
-        {name: 'Площадь по убыванию', icon: 'IconSortedDown' },
-      ],
-
       cardInfo: [
         {
           name: 'Название не ',
@@ -290,58 +295,108 @@ export default {
 
       ]
     }
-  },
-
-  created() {
-    for (let i = 0; i < this.found.length; i++) {
-      if (this.found[i].ItemLink === this.$route.path.split('/')[1]){
-        this.found[i].ItemSelected = true
-      }
-    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.parameters{
+@import "assets/style/variables";
+
+.apartment{
   display: flex;
   flex-direction: column;
+  background: $one-base-color;
+  width: 100%;
+  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+
+
+  //разметка
 
   &__header{
     display: flex;
-    justify-content: space-between;
-    gap: clamp(10px, 3vw, 30px);
+    flex-direction: row;
   }
 
-  &__body{
+  &__footer{
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    flex-direction: column;
+    width: 100%;
+    padding: 60px;
+  }
 
-    &__cards{
+  //компоненты
 
-      &__horizontal{
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-      &__vertical{
+  &__info{
+    flex: 1;
+
+    padding: 60px;
+
+    &__nav-bar{
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      gap: 7px;
+
+      cursor: pointer;
+      padding-bottom: 40px;
+    }
+
+    &__price{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      &_box-name{
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        gap: 20px;
+        flex-wrap: nowrap;
 
-        &-card{
-          height: 100%;
-        }
+        gap: 20px;
+      }
+
+      &_name{
+        font-size: 40px;
+        font-weight: 500;
+      }
+
+      &_crossed{
+        text-decoration: line-through;
+
+        color: $gray-blue;
+      }
+
+      &_per-meter{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
       }
     }
+  }
 
-    &__filter{
-      width: 33%;
+  &__card{
+    flex: 1;
+
+    padding: 60px;
+
+    background: $white-color;
+  }
+
+  &__footer{
+
+    &_card{
       height: 100%;
+      &-box{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+
+      }
     }
   }
+
 }
 </style>

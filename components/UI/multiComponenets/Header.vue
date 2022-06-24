@@ -57,7 +57,7 @@ export default Vue.extend({
     switchObjectProps: {
       required: false,
       type: Array as () => Array<{TabSelected: boolean, TabName: String}>,
-      default: [{TabSelected: true, TabName: 'Не выбранно'},],
+      default: () => [{TabSelected: true, TabName: 'Не выбранно'},],
     }
   },
 

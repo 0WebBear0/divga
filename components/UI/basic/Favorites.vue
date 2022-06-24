@@ -40,7 +40,7 @@ export default Vue.extend({
   justify-content: space-evenly;
   gap: clamp(1px, 1vw, 8px);
 
-  width: 100%;
+  width: max-content;
   min-width: 95px;
   padding-left: 20px;
   padding-right: 20px;

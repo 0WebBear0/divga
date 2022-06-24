@@ -2,18 +2,18 @@
   <div class="multi-slider">
     <div class="multi-slider__input-box">
 
-      <b-input-group prepend="От:" class="multi-slider__input-box-item">
+      <b-input-group :prepend="'От:'" class="multi-slider__input-box-item">
         <b-input
           v-model="slider.minNow"
-          type="Number"
+          type="number"
           @change="showPrice()"
         />
       </b-input-group>
 
-      <b-input-group prepend="До:" class="multi-slider__input-box-item">
+      <b-input-group :prepend="'До:'" class="multi-slider__input-box-item">
         <b-input
           v-model="slider.maxNow"
-          type="Number"
+          type="number"
           @change="showPrice()"
         />
       </b-input-group>
@@ -45,7 +45,7 @@
 import Vue from "vue";
 
 interface Slider{
-  min: Number,
+  min: Number | undefined,
   max: Number,
   step: Number,
 
@@ -60,8 +60,18 @@ export default Vue.extend({
 
   props: {
     slider:{
-      required: true,
-      type: Object as () => Slider
+      required: false,
+      type: Object as () => Slider,
+      default: () => ({
+        min: 0,
+        max: 100,
+        step: 1,
+
+        minNow: 12,
+        maxNow: 77,
+
+        helperText: 'Empty'
+      })
     }
   },
 
@@ -82,12 +92,6 @@ export default Vue.extend({
 
       }
       this.showPrice()
-    },
-    baseValidate(){
-      if (this.slider.minNow < this.slider.min) this.slider.minNow = this.slider.min
-
-      if (this.slider.maxNow > this.slider.max) this.slider.maxNow = this.slider.max
-
     },
 
     showPrice(){
