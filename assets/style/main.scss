@@ -18,7 +18,7 @@ body{
 
   cursor: default;
 
-  
+
 }
 
 svg{
@@ -46,6 +46,10 @@ svg{
     &:active{
       opacity: 0.6;
     }
+  }
+
+  &-little{
+    font-size: 12px;
   }
 }
 
@@ -136,4 +140,19 @@ svg{
   background: none;
   text-decoration: none !important;
   fill: $white-color;
+}
+
+.underline{
+  text-decoration-line: underline;
+}
+
+.select-any{
+  cursor: pointer;
+
+  &:hover{
+    opacity: 0.6;
+  }
+  &:active{
+    opacity: 0.8;
+  }
 }
