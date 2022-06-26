@@ -19,6 +19,7 @@
         <div v-for="item in cardInfo">
           <CardVertical :card-info="item" class="parameters__body__cards__vertical-card"/>
         </div>
+        <PaginatorHorizontal :params="[{name: 1, selected: false},{name: 2, selected: true},{name: 3, selected: false},]" />
       </div>
 
       <!-- cards horizontal -->
@@ -26,6 +27,7 @@
         <div v-for="item in cardInfo">
           <CardHorizontalFavorite :card-info="item"/>
         </div>
+        <PaginatorHorizontal :params="[{name: 1, selected: false},{name: 2, selected: true},{name: 3, selected: false},]" />
       </div>
     </div>
   </div>
@@ -37,10 +39,11 @@ import IconArrow from "@/components/icon/IconArrow";
 import {HelperWithEndWord} from "@/components/mixins/HelperWithEndWord";
 import CardVertical from "@/components/UI/multiComponenets/CardVertical";
 import CardHorizontalFavorite from "@/components/UI/multiComponenets/CardHorizontalFavorite";
+import PaginatorHorizontal from "@/components/UI/basic/PaginatorHorizontal";
 
 export default {
   name: "favorites",
-  components: {CardHorizontalFavorite, CardVertical, IconArrow, Header},
+  components: {PaginatorHorizontal, CardHorizontalFavorite, CardVertical, IconArrow, Header},
 
   data(){
     return {

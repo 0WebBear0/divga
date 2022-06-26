@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__title">{{titleName}}</div>
 
-    <div class="header__selection">
+    <div class="header__selection" v-if="switcherNone">
 
       <!-- switcher -->
       <Switcher
@@ -22,7 +22,7 @@
       <slot/>
 
     </div>
-    <div class="splitter mt-4 mb-4"></div>
+    <div class="splitter mt-4 mb-4" v-if="underline"></div>
   </div>
 </template>
 
@@ -58,6 +58,16 @@ export default Vue.extend({
       required: false,
       type: Array as () => Array<{TabSelected: boolean, TabName: String}>,
       default: () => [{TabSelected: true, TabName: 'Не выбранно'},],
+    },
+    switcherNone: {
+      required: false,
+      type: Boolean,
+      default: () => true
+    },
+    underline: {
+      required: false,
+      type: Boolean,
+      default: () => true
     }
   },
 
@@ -104,7 +114,7 @@ export default Vue.extend({
     text-transform: uppercase;
 
 
-    padding-bottom: 40px;
+    padding-bottom: clamp(0px,3vw,40px);
   }
 
   &__selection{

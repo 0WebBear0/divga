@@ -15,7 +15,7 @@
     <!-- center -->
     <div class="card__body">
 
-      <div>
+      <div class="card__body-floor">
         <div class="card__body-name_square">
           {{cardInfo.square}} M<sup>2</sup>
         </div>
@@ -218,4 +218,31 @@ export default Vue.extend({
     cursor: pointer;
   }
 }
+
+
+@media (max-width: 640px) {
+  .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    padding-left: 20px;
+    &__body{
+      &-floor {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 7px;
+        }
+      &-end_price{
+        font-size: 12px;
+        font-weight: 500;
+      }
+      }
+    }
+  .splitter-vertical{
+    display: none;
+  }
+}
+
 </style>

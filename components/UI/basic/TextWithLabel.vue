@@ -128,6 +128,7 @@ export default Vue.extend ({
 
     &-body{
       color: $white-color;
+      width: max-content;
       text-transform: uppercase;
       cursor: pointer;
     }

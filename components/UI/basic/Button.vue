@@ -1,5 +1,5 @@
 <template>
-  <div class="m-button normal-padding" :class="{'m-button__empty': emptyInside}">
+  <div class="m-button" :class="{'m-button__empty': emptyInside}">
     <component v-if="params.icon !== null" :is="params.icon"></component>
     <div class="m-button__text" v-if="params.name !== null">{{params.name}}</div>
   </div>
@@ -43,6 +43,8 @@ export default Vue.extend({
   background-color: rgb($accent-color, 1);
   text-transform: uppercase;
   color: $one-base-darker-color;
+
+  padding: clamp(15px,2vw,20px);
 
   display: flex;
   justify-content: space-between;

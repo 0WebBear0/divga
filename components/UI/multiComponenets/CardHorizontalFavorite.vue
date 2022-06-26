@@ -29,8 +29,8 @@
 
     <!-- center place -->
     <div class="card__favorite">
-      <Button :params="{name:'Искать', icon: null}" style="padding: 20px 35px"/>
-      <IconCross class="svg-dark"/>
+      <Button :params="{name:'Искать', icon: null}" class="card__favorite_search"/>
+      <IconCross class="svg-dark card_exit"/>
     </div>
 
   </div>
@@ -159,6 +159,10 @@ export default Vue.extend({
     justify-content: space-between;
 
     gap: 20px;
+
+    &_search{
+      padding: clamp(0px,3vw,20px) clamp(0px,4vw,35px)
+    }
   }
 
   &__icon{
@@ -173,6 +177,39 @@ export default Vue.extend({
   &:hover{
     opacity: 0.9;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 640px) {
+  .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    padding-left: 20px;
+
+    &_exit{
+      display: none;
+    }
+
+    &__body{
+      display: flex;
+      flex-direction: column;
+
+      &-floor {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 7px;
+      }
+      &-end_price{
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+  .splitter-vertical{
+    display: none;
   }
 }
 </style>

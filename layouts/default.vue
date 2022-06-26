@@ -17,7 +17,7 @@ export default {
   background-color: $one-base-color;
   min-height: 100vh;
   height: 100%;
-  padding: 50px 70px 60px 70px;
+  padding: clamp(5px,5vw,50px) clamp(7px,7vw,70px) clamp(6px,6vw,60px) clamp(7px,7vw,70px);
 
 }
 </style>

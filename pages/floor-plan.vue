@@ -117,7 +117,17 @@ export default {
     }
   },
 
-  created() {
+
+  methods: {
+    redirect(){
+      if (window.screen.width < 960){
+        this.$router.push('/parameters')
+      }
+    }
+  },
+
+  beforeMount() {
+    this.redirect()
   }
 }
 </script>

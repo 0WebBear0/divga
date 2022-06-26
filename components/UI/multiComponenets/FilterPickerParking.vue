@@ -145,8 +145,8 @@ export default Vue.extend({
 
     &-btn{
 
-      width: clamp(20px, 5vw, 54px);
-      height: clamp(20px, 5vw, 54px);
+      width: clamp(40px, 5vw, 54px);
+      height: clamp(40px, 5vw, 54px);
 
       background-color: rgb($white-color, 0);
       color: rgb($white-color, 1);
@@ -154,8 +154,8 @@ export default Vue.extend({
 
       &-selected{
 
-        width: clamp(20px, 5vw, 54px);
-        height: clamp(20px, 5vw, 54px);
+        width: clamp(40px, 5vw, 54px);
+        height: clamp(40px, 5vw, 54px);
         color: rgb($one-base-color, 1);
         background-color: rgb($accent-color, 1);
       }

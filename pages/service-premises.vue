@@ -6,7 +6,7 @@
       <div>Назад к выбору апартаментов</div>
     </div>
 
-    <Header title-name="Выберите парковку" :switch-object-props="tabs" @selected="typeChange">
+    <Header :switcher-none="switcherNone" title-name="Выберите парковку" :switch-object-props="tabs" @selected="typeChange">
       <div v-if="!tabName" class="floor-plan__padding">
         <TextWithLabel text="Найдено" :text-body="['5 мест']" />
       </div>
@@ -95,6 +95,7 @@
           <div v-for="item in cardList">
             <CardHorizontalService :card-info="item"/>
           </div>
+          <PaginatorHorizontal :params="[{name: 1, selected: false},{name: 2, selected: true},{name: 3, selected: false},]" />
         </div>
       </div>
     </div>
@@ -112,11 +113,13 @@ import FilterPickerParking from "@/components/UI/multiComponenets/FilterPickerPa
 import CardHorizontalService from "@/components/UI/multiComponenets/CardHorizontalService";
 import IconAuto from "@/components/icon/IconAuto";
 import TextWithLabel from "@/components/UI/basic/TextWithLabel";
+import PaginatorHorizontal from "@/components/UI/basic/PaginatorHorizontal";
 
 export default {
   name: "service-premises",
 
   components: {
+    PaginatorHorizontal,
     TextWithLabel,
     CardHorizontalService,
     FilterPickerParking,
@@ -132,6 +135,7 @@ export default {
     return{
       tabName: true,
       carInfo: false,
+      switcherNone: true,
       tabs: [
         {TabName: 'На плане этажа', TabSelected: true},
         {TabName: 'По параметрам', TabSelected: false}
@@ -206,10 +210,18 @@ export default {
     typeChange(data){
       this.tabName = data
     },
+    changeType(){
+      if (window.screen.width < 960){
+        this.tabName = false
+        this.switcherNone = false
+      }
+    }
   },
 
-  created() {
+  beforeMount() {
+    this.changeType()
   }
+
 }
 </script>
 
@@ -383,6 +395,16 @@ export default {
 
   &__padding{
     padding-right: 60%;
+  }
+}
+
+@media (max-width: 960px) {
+  .floor-plan{
+
+    &__body{
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 </style>

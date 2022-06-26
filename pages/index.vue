@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import Vue from 'vue'
 import Header from "~/components/UI/multiComponenets/Header.vue";
 import Favorites from "~/components/UI/basic/Favorites.vue";
@@ -38,20 +38,19 @@ export default Vue.extend({
   data(){
     return{
       iconAuto : IconAuto,
-
-      linkedObject: [
-        {ItemSelected: false, ItemName: '3D-план', ItemLink: ''},
-        {ItemSelected: false, ItemName: '2D-план', ItemLink: 'parameters'}
-      ]
     }
   },
 
-  created() {
-    for (let i = 0; i < this.linkedObject.length; i++) {
-      if (this.linkedObject[i].ItemLink === this.$route.path.split('/')[1]){
-        this.linkedObject[i].ItemSelected = true
+  methods: {
+    redirect(){
+      if (window.screen.width < 960){
+        this.$router.push('/parameters')
       }
     }
+  },
+
+  beforeMount() {
+    this.redirect()
   }
 })
 </script>
