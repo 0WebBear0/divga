@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header__title">{{titleName}}</div>
 
-    <div class="header__selection">
+    <div class="header__selection" :class="{'header__selection-show': showSwitcher}">
 
       <!-- switcher -->
       <Switcher
@@ -58,6 +58,11 @@ export default Vue.extend({
       required: false,
       type: Array as () => Array<{TabSelected: boolean, TabName: String}>,
       default: () => [{TabSelected: true, TabName: 'Не выбранно'},],
+    },
+    showSwitcher: {
+      required: false,
+      type: Boolean,
+      default: () => false
     },
     underline: {
       required: false,
@@ -130,6 +135,8 @@ export default Vue.extend({
   .header__selection{
     display: none !important;
   }
-
+  .header__selection-show{
+    display: flex !important;
+  }
 }
 </style>

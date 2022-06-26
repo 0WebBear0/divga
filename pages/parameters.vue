@@ -421,15 +421,18 @@ export default {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 960px) {
   .parameters {
 
     &__body{
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
 
       &__filter{
+        display: flex;
+        justify-content: center;
         width: 100%;
       }
     }
@@ -503,8 +506,8 @@ export default {
     min-width: 10px !important;
     padding: 10px !important;
 
-margin-bottom: 10px;
-margin-right: 10px;
-}
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
 }
 </style>

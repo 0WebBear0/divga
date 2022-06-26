@@ -276,7 +276,7 @@ export default Vue.extend({
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 960px) {
 
   .show-item-mobile{
     display: none !important;
@@ -295,7 +295,7 @@ export default Vue.extend({
     padding-right: 10px;
   }
   .filter-base{
-    padding: 24px 20px 24px 20px !important;
+    padding: clamp(24px, 5vw, 40px) clamp(20px, 5vw, 36px) clamp(24px, 5vw, 40px) clamp(20px, 5vw, 36px) !important;
   }
 }
 </style>
