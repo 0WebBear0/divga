@@ -158,10 +158,11 @@ export default Vue.extend({
     align-items: center;
     justify-content: space-between;
 
-    gap: 20px;
+    gap: clamp(20px, 3vw, 35px);
+
 
     &_search{
-      padding: clamp(0px,3vw,20px) clamp(0px,4vw,35px)
+      padding: clamp(1px,3vw,15px) clamp(1px,4vw,35px)
     }
   }
 

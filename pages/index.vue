@@ -11,7 +11,7 @@
       <div class="font-gilroy pb-4">Наведите на этаж, чтобы увидеть доступные квартиры</div>
 
       <div class="picker__body-label">
-        <div class="text-select m-3">test</div>
+        <div class="text-select m-3">II кв. 2022 <div>сроки сдачи</div></div>
         <nuxt-link to="service-premises" class="style-none">
           <Button
             class="svg-dark svg-dark-over m-3 p-3"

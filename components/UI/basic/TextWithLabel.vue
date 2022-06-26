@@ -89,8 +89,6 @@ export default Vue.extend ({
       popup!.style!.top = `${positionElement!.top + 20}px` ?? ''
       popup!.style!.left = `${positionElement!.left + positionElement!.width/2 + 20}px` ?? ''
 
-      console.log(popup)
-      console.log(positionElement)
     },
 
     openClosePopup(){
@@ -152,10 +150,12 @@ export default Vue.extend ({
     &-item{
       display: flex;
       flex-direction: row;
+      align-items: center;
+      justify-content: start;
       flex: 1;
 
       padding: clamp(2px, 1vw, 8px) clamp(4px, 3vw, 16px);
-      gap: clamp(0px, 1vw, 8px);
+      gap: clamp(1px, 1vw, 10px);
 
       background: $one-base-darker-color;
       z-index: 1;

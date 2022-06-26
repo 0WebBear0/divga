@@ -3,7 +3,7 @@
     <component v-if="params.icon !== null" :is="params.icon"></component>
     <div class="m-button__text" v-if="params.name !== null">{{params.name}}</div>
   </div>
-</template>1
+</template>
 
 <script lang="ts">
 
@@ -21,10 +21,6 @@ export default Vue.extend({
     params: {
       required: true,
       type: Object as () => ButtonInfo,
-    },
-    squareStyle: {
-      required: false,
-      type: String
     },
     emptyInside:{
       required: false,

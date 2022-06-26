@@ -1,59 +1,72 @@
 <template>
-  <div class="filter">
+  <div class="filter-base">
 
     <div class="filter__header">
-      <div class="">
-        Фильтры
+      <div>
+        Фильтры <span v-if="!showFilter">(5)</span>
       </div>
-      <div class="filter__header__rest">
+      <div class="filter__header__rest show-item-mobile">
         Сбросить
       </div>
+      <div v-if="showFilter" class="filter__header__rest-mobile unshow-item-mobile" @click="showFilter = !showFilter">
+        Свернуть
+        <DropdownArrow/>
+      </div>
+      <div v-if="!showFilter" class="filter__header__rest-mobile unshow-item-mobile" @click="showFilter = !showFilter">
+        Развернуть
+        <DropdownArrow style="transform: rotate(180deg)"/>
+      </div>
     </div>
 
-    <div class="splitter"></div>
+    <div class="filter" v-show="showFilter">
+      <div class="splitter"></div>
 
-    <!-- Количество комнат -->
-    <div class="filter__count-rooms">
-      <div class="filter__count-rooms-text">Количество комнат</div>
+      <!-- Количество комнат -->
+      <div class="filter__count-rooms">
+        <div class="filter__count-rooms-text">Количество комнат</div>
 
-      <div class="filter__count-rooms-box">
-        <div v-for="(count, index) in countRoom">
-          <Button
-            class="filter__count-rooms-btn"
-            :params="{name: count.name, icon: null}"
-            :class="{ 'filter__count-rooms-btn-selected': count.selected }"
-            @click.native="changeCountRoom(index)"
-          />
+        <div class="filter__count-rooms-box">
+          <div v-for="(count, index) in countRoom">
+            <Button
+              class="filter__count-rooms-btn"
+              :params="{name: count.name, icon: null}"
+              :class="{ 'filter__count-rooms-btn-selected': count.selected }"
+              @click.native="changeCountRoom(index)"
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Стоимость -->
-    <div class="filter__price">
-      <div class="filter__price-text">Стоимость</div>
+      <!-- Стоимость -->
+      <div class="filter__price">
+        <div class="filter__price-text">Стоимость</div>
 
-      <div class="filter__price-box">
-        <MultiSlider :slider="price" />
+        <div class="filter__price-box">
+          <MultiSlider :slider="price" />
+        </div>
       </div>
-    </div>
 
-    <!-- Площадь -->
-    <div class="filter__price">
-      <div class="filter__price-text">Площадь</div>
+      <!-- Площадь -->
+      <div class="filter__price">
+        <div class="filter__price-text">Площадь</div>
 
-      <div class="filter__price-box">
-        <MultiSlider :slider="square" />
+        <div class="filter__price-box">
+          <MultiSlider :slider="square" />
+        </div>
       </div>
-    </div>
 
-    <!-- Особенность квартиры -->
-    <MultiSelect :selectors="multiSlider" @select="selectItems"/>
+      <!-- Особенность квартиры -->
+      <MultiSelect :selectors="multiSlider" @select="selectItems"/>
 
-    <Button :params="{name: 'Применить', icon: null}"/>
+      <Button style="padding: clamp(15px,2vw,20px) clamp(25px,3vw,40px)" :params="{name: 'Применить', icon: null}"/>
 
 
-    <div class="filter__header__rest">
-      Сохранить параметры поиска
+      <div class="filter__header__rest">
+        Сохранить параметры поиска
+      </div>
+      <div class="filter__header__rest unshow-item-mobile">
+        Сбросить
+      </div>
     </div>
   </div>
 </template>
@@ -63,15 +76,19 @@ import Vue from "vue";
 import Button from "~/components/UI/basic/Button.vue";
 import MultiSlider from "~/components/UI/basic/MultiSlider.vue";
 import MultiSelect from "~/components/UI/basic/MultiSelect.vue";
+import DropdownArrow from "~/components/icon/DropdownArrow.vue";
 
 
 export default Vue.extend({
   name: "FilterPicker",
 
-  components: {MultiSelect, MultiSlider, Button},
+  components: {DropdownArrow, MultiSelect, MultiSlider, Button},
 
   data(){
     return{
+
+      showFilter: true,
+
       countRoom: [
         {name: 1, selected: true},
         {name: 2, selected: false},
@@ -126,11 +143,16 @@ export default Vue.extend({
 .filter{
   display: flex;
   flex-direction: column;
-
-  padding: 50px 40px 50px 40px;
   gap: 25px;
 
-  background-color: $one-base-darker-color;
+  &-base{
+    gap: 25px;
+    display: flex;
+    flex-direction: column;
+
+    background-color: $one-base-darker-color;
+    padding: 50px 40px 50px 40px;
+  }
 
   &__header{
     display: flex;
@@ -145,6 +167,29 @@ export default Vue.extend({
 
       align-items: flex-end;
       font-size: 14px;
+
+      &-mobile{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 10px;
+
+        text-transform: uppercase;
+        color: rgb($select-color, 0.5);
+
+        font-size: 14px;
+
+        &:hover{
+          color: rgb($select-color, 0.7);
+          cursor: pointer;
+        }
+
+        &:active{
+          color: rgb($select-color, 1);
+          cursor: pointer;
+        }
+      }
 
       &:hover{
         color: rgb($select-color, 0.7);
@@ -221,6 +266,36 @@ export default Vue.extend({
 
       }
     }
+  }
+}
+.show-item-mobile{
+  display: flex;
+}
+.unshow-item-mobile{
+  display: none;
+}
+
+
+@media (max-width: 700px) {
+
+  .show-item-mobile{
+    display: none !important;
+  }
+  .unshow-item-mobile{
+    display: flex !important;
+  }
+
+
+  .filter__header{
+    min-width: 80vw;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10px;
+  }
+  .filter-base{
+    padding: 24px 20px 24px 20px !important;
   }
 }
 </style>

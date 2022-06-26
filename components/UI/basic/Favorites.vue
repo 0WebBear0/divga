@@ -1,7 +1,8 @@
 <template>
   <div class="favorite-b normal-padding text-select" :class="{'favorite-b__empty': favorite.count === 0}">
     <IconHearth class="icon-scalable favorite-b-icon"/>
-    <div class="favorite-b-text">Избранное {{favorite.count === 0 ? '' : `(${favorite.count})`}}</div>
+    <div class="favorite-b-text" v-if="helperText === 'Избранное'">{{helperText}} {{favorite.count === 0 ? '' : `(${favorite.count})`}}</div>
+    <div class="favorite-b-text" v-else>{{helperText}} {{favorite.count === 0 ? '' : `${favorite.count}`}}</div>
   </div>
 </template>
 
@@ -21,6 +22,11 @@ export default Vue.extend({
       required: false,
       default: 0,
       type: Object as () => Favorite
+    },
+    helperText: {
+      required: false,
+      default: 'Избранное',
+      type: String
     }
   }
 })

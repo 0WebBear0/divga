@@ -1,6 +1,6 @@
 <template>
   <div class="favorite">
-    <Header class="favorite__header_el" :switch-object-props="switchObjectFavorite" @selected="typeChange"/>
+    <Header class="favorite__header_el" title-name="Избранное" :switch-object-props="switchObjectFavorite" @selected="typeChange"/>
 
     <div class="favorite__body">
       <!-- body header -->

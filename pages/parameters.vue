@@ -1,11 +1,11 @@
 <template>
   <div class="parameters">
-    <Header :underline="false" :switcher-none="!mobile">
+    <Header :underline="false">
       <div class="parameters__header">
         <TextWithLabel text="Найдено:" :text-body="['27 квартир']" />
         <TextWithLabel item-id="sort" text="Сортировка:" :popup-item="popup" :text-body="['Цена по возрастанию']" />
         <UsersView text="Вид" @clicked="(data) => this.typeRender = data" />
-        <nuxt-link to="favorites" class="style-none"><Favorites :favorite="{count: 1}"/></nuxt-link>
+        <nuxt-link to="favorites" class="style-none show-item-mobile"><Favorites :favorite="{count: 1}"/></nuxt-link>
       </div>
 
     <!--   для адаптива   -->
@@ -38,6 +38,7 @@
               @click.native="$router.push('apartment/' + index)"
             />
           </div>
+          <PaginatorHorizontal :params="[{name: 1, selected: false},{name: 2, selected: true},{name: 3, selected: false},]"/>
         </div>
         <div v-else class="parameters__body__cards__horizontal">
           <div v-for="(item, index) in cardInfo">
@@ -46,9 +47,13 @@
               @click.native="$router.push('apartment/' + index)"
             />
           </div>
+          <PaginatorHorizontal :params="[{name: 1, selected: false},{name: 2, selected: true},{name: 3, selected: false},]"/>
         </div>
       </div>
     </div>
+    <nuxt-link to="favorites" class="style-none">
+      <Favorites class="unshow-item-mobile parameters__favorite_absolute" :favorite="{count: 2}" helper-text=""/>
+    </nuxt-link>
   </div>
 </template>
 
@@ -63,17 +68,19 @@ import IconSortedDown from "@/components/icon/IconSortedDown";
 import FilterPicker from "@/components/UI/multiComponenets/FilterPicker";
 import CardVertical from "@/components/UI/multiComponenets/CardVertical";
 import CardHorizontal from "@/components/UI/multiComponenets/CardHorizontal";
+import PaginatorHorizontal from "@/components/UI/basic/PaginatorHorizontal";
 
 
 export default {
   name: "parameters",
 
-  components: {CardHorizontal, CardVertical, FilterPicker, UsersView, TextWithLabel, Favorites, LinkedList, Header},
+  components: {
+    PaginatorHorizontal,
+    CardHorizontal, CardVertical, FilterPicker, UsersView, TextWithLabel, Favorites, LinkedList, Header},
 
   data(){
     return{
       typeRender: true,
-      mobile: false,
       found: [
         {ItemSelected: true, ItemName: '27 квартир', ItemLink: false},
       ],
@@ -316,12 +323,6 @@ export default {
       }
     }
   },
-
-  beforeMount() {
-    if (window.screen.width < 480){
-      this.mobile = true
-    }
-  }
 }
 </script>
 
@@ -369,9 +370,16 @@ export default {
 
     &__filter{
       width: max-content;
+      max-width: 30%;
       height: 100%;
     }
   }
+}
+.show-item-mobile{
+  display: block;
+}
+.unshow-item-mobile{
+  display: none !important;
 }
 
 @media (max-width: 1390px) {
@@ -403,6 +411,13 @@ export default {
       }
     }
 
+    &__body{
+      &__filter{
+        width: max-content;
+        max-width: max-content;
+        height: 100%;
+      }
+    }
   }
 }
 
@@ -427,6 +442,10 @@ export default {
 }
 
 @media (max-width: 480px) {
+
+  .header__selection{
+    display: none !important;
+  }
 
   .parameters {
     &__header {
@@ -468,5 +487,24 @@ export default {
     justify-content: start;
   }
 
+  .show-item-mobile{
+    display: none;
+  }
+  .unshow-item-mobile{
+    display: flex !important;
+  }
+  .parameters__favorite_absolute{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+
+    right: 0;
+    bottom: 0;
+    min-width: 10px !important;
+    padding: 10px !important;
+
+margin-bottom: 10px;
+margin-right: 10px;
+}
 }
 </style>

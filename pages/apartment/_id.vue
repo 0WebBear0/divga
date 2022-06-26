@@ -8,7 +8,11 @@
 
         <!-- Верхняя часть с ценой  -->
         <div class="apartment__info__nav-bar">
-            Главная <span class="opacity05">/</span> Выбор квартиры <span class="opacity05">/</span> <span class="opacity05">2 комнатная #489</span>
+          <nuxt-link class="text-select" :to="'/'">Главная</nuxt-link>
+          <span class="opacity05">/</span>
+          <span @click="$router.back()" class="text-select">Выбор квартиры</span>
+          <span class="opacity05">/</span>
+          <span class="opacity05">2 комнатная #489</span>
         </div>
 
         <div class="apartment__info__price">
@@ -20,7 +24,7 @@
 
           <MultiElement :selectors="[{name: 'Два санузла'},{name: 'Лоджия'},{name: 'Чистовая отделка'}]" />
 
-          <div>
+          <div class="mt-5">
             <div class="apartment__info__price_crossed">
               15 000 000 ₽
             </div>
@@ -33,8 +37,12 @@
             </div>
           </div>
         </div>
+        <!--  карта при мобиле  -->
+        <div class="apartment__card unshow-item text-dark">
+          <ApartmentCard/>
+        </div>
 
-        <div class="splitter opacity05"></div>
+        <div class="splitter mt-4 mb-1 opacity05"></div>
 
         <!-- Площадь и этажи  -->
         <div class="apartment__info__floor">
@@ -61,15 +69,15 @@
 
         </div>
 
-        <div class="splitter opacity05"></div>
+        <div class="splitter mb-5 mt-1 opacity05"></div>
 
         <!-- Заказ звонка и акции  -->
         <div class="apartment__info__call">
 
           <div class="apartment__info__call-container">
             <div class="apartment__info__call_btns">
-              <Button :params="{name: 'Заказать звонок', icon: null}" class="p-3" />
-              <Button empty-inside :params="{name: 'Заказать звонок', icon: null}" class="p-3" />
+              <Button :params="{name: 'Заказать звонок', icon: null}" class="p-3 show-item-mobile" />
+              <Button empty-inside :params="{name: 'План квартиры.pdf', icon: null}" class="p-3" />
               <Button empty-inside :params="{name: null, icon: 'IconFax'}" class="p-3" />
             </div>
           </div>
@@ -82,7 +90,7 @@
 
           <div class="apartment__info__call_stock">
 
-            <div class="apartment__info__price_name">Aкции с этой квартирой</div>
+            <div class="apartment__info__price_name mt-5">Aкции с этой квартирой</div>
             <div class="splitter opacity05"></div>
 
             <div class="apartment__info__call_stock-item">
@@ -102,7 +110,7 @@
 
       </div>
 
-      <div class="apartment__card text-dark">
+      <div class="apartment__card show-item text-dark">
         <ApartmentCard/>
       </div>
 
@@ -128,7 +136,7 @@
         </div>
       </div>
     </div>
-
+    <Button :params="{name: 'Заказать звонок', icon: null}" class="p-3 unshow-item-mobile apartment_call-to-as" />
   </div>
 </template>
 
@@ -227,14 +235,14 @@ export default {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 60px;
+    padding: clamp(20px,3vw,60px);
   }
 
   //компоненты
 
   &__info{
     flex: 1;
-    padding: 60px 60px 0 60px;
+    padding: clamp(20px,3vw,60px) clamp(15px,3vw,60px) 0 clamp(20px,3vw,60px);
 
     display: flex;
     flex-direction: column;
@@ -264,8 +272,10 @@ export default {
       }
 
       &_name{
-        font-size: 40px;
+        white-space: nowrap;
+        font-size: clamp(20px, 3vw ,35px);
         font-weight: 500;
+        text-transform: uppercase;
       }
 
       &_crossed{
@@ -289,6 +299,7 @@ export default {
     &__floor{
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: left;
       gap: 60px;
 
@@ -314,6 +325,7 @@ export default {
       &_btns{
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: left;
 
         gap: 15px;
@@ -343,15 +355,18 @@ export default {
   }
 
   &__card{
+    display: flex;
     flex: 1;
 
-    padding: 60px;
-
+    padding: clamp(20px,2vw,60px);
+    width: 100%;
     background: $white-color;
 
   }
 
   &__footer{
+
+    width: 100%;
 
     &_header{
       display: flex;
@@ -409,6 +424,65 @@ export default {
 
       }
     }
+  }
+}
+
+.show-item{
+  display: block;
+}
+.unshow-item{
+  display: none;
+}
+.unshow-item-mobile{
+  display: none !important;
+}
+
+@media (max-width: 1080px) {
+  .apartment{
+    &__header{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .show-item{
+    display: none;
+  }
+  .unshow-item{
+    display: block;
+  }
+}
+
+@media (max-width: 460px) {
+  .apartment{
+    &__info__price_box-name{
+      display: flex;
+      flex-direction: row;
+      justify-content: left;
+      align-items: start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    &_call-to-as{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 90%;
+
+      margin-left: 5%;
+      margin-bottom: 3%;
+    }
+    &__footer{
+      padding-bottom: 80px;
+    }
+  }
+  .favorite-b__empty{
+    padding-left: 0;
+  }
+  .show-item-mobile{
+    display: none !important;
+  }
+  .unshow-item-mobile{
+    display: block;
   }
 
 }

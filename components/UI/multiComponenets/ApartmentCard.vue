@@ -3,24 +3,30 @@
 
     <div class="apartment-card__header">
 
-      <!--   Селектор   -->
-      <div class="apartment-card__header_switcher">
-        <SwitcherTab
-          class="apartment-card_switcher"
-          type="dark"
-          :switch-object="switcher"
-          @tabSelect="selectTab"
-        />
-      </div>
+      <div class="apartment-card__header_subheader">
+        <!--   Селектор   -->
+        <div class="apartment-card__header_switcher">
+          <SwitcherTab
+            class="apartment-card_switcher"
+            type="dark"
+            :switch-object="switcher"
+            @tabSelect="selectTab"
+          />
+        </div>
 
-      <!--   Вид из окон   -->
-      <div class="apartment-card__header_window">
-        <IconEye />
-        Вид из окон
+        <!--   Вид из окон   -->
+        <div class="apartment-card__header_window" @click="$bvModal.show('window')">
+          <IconEye />
+          Вид из окон
+        </div>
+        <!--   Icon   -->
+        <div class="apartment-card__header_window-unshow">
+          <IconCompass class="apartment-card_icon-compass"/>
+        </div>
       </div>
 
       <!--   Icon   -->
-      <div>
+      <div class="apartment-card__header_window-show">
         <IconCompass class="apartment-card_icon-compass"/>
       </div>
 
@@ -55,6 +61,13 @@
       <div class="apartment-card__body-content__footer_text opacity05">океанский проспект</div>
       <div class="splitter color-blue opacity025"></div>
     </div>
+
+
+    <!--  Modal window  -->
+    <b-modal id="window" size="xl" hide-footer content-class="apartment-card_window">
+      <img :src="'Window.png'" alt="t" class="apartment-card_window_img">
+      <div class="text-dark apartment-card_window_text">Видовые характеристики указаны приблизительно для предварительного ознакомления.</div>
+    </b-modal>
   </div>
 </template>
 
@@ -112,6 +125,16 @@ export default Vue.extend({
     justify-content: space-between;
     padding-bottom: 20px;
 
+    &_subheader{
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+
+    }
+
     &_window{
       display: flex;
       flex-direction: row;
@@ -121,6 +144,10 @@ export default Vue.extend({
       font-size: 14px;
       gap: 10px;
       text-decoration: underline;
+
+      &-unshow{
+        display: none;
+      }
 
       &:hover{
         opacity: 0.5;
@@ -133,6 +160,7 @@ export default Vue.extend({
     &_switcher{
       display: flex;
       align-items: center;
+      width: 100%;
     }
   }
 
@@ -212,7 +240,9 @@ export default Vue.extend({
 
     &-compass {
       height: 4vw;
+      min-height: 40px;
       width: 4vw;
+      min-width: 40px;
     }
 
     &-right {
@@ -255,5 +285,45 @@ export default Vue.extend({
 
     font-size: clamp(8px, 3vw, 12px);
   }
+
+  &_window{
+    display: flex;
+    flex-direction: column;
+
+    &_img{
+      width: 100%;
+    }
+
+    &_text{
+      padding-top: 25px;
+      padding-bottom: 15px;
+    }
+  }
 }
+
+@media (max-width: 460px) {
+  .apartment {
+
+    &-card {
+      &__header_window-unshow {
+        display: block;
+      }
+
+      &__header_window-show {
+        display: none;
+      }
+
+      &__header_switcher {
+        display: flex;
+        justify-content: center;
+      }
+
+      &__body-content__body_img{
+        width: 80%;
+      }
+    }
+  }
+}
+
+
 </style>
