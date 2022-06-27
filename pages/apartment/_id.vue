@@ -1,5 +1,5 @@
 <template>
-  <div class="apartment">
+  <div class="apartment" v-if="!loading">
 
     <!-- header -->
     <div class="apartment__header">
@@ -154,6 +154,7 @@ export default {
 
   data(){
     return{
+      loading: true,
       cardInfo: [
         {
           name: 'Название не ',
@@ -207,6 +208,11 @@ export default {
 
       ]
     }
+  },
+  created() {
+    this.$nextTick(function() {
+      this.loading = false
+    })
   }
 }
 </script>
