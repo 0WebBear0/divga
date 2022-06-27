@@ -487,7 +487,7 @@ export default {
 
   .text-with-label{
     display: flex;
-    justify-content: start;
+    justify-content: start !important;
   }
 
   .show-item-mobile{
