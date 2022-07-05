@@ -370,7 +370,7 @@ export default {
 
     &__filter{
       width: max-content;
-      max-width: 30%;
+      max-width: 25%;
       height: 100%;
     }
   }

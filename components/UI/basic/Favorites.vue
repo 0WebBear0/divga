@@ -50,6 +50,8 @@ export default Vue.extend({
   min-width: 95px;
   padding-left: 20px;
   padding-right: 20px;
+
+  text-transform: uppercase;
   &-text{
     display: flex;
     align-items: center;

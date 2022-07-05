@@ -3,13 +3,13 @@
     <div class="card">
 
       <!-- header -->
-      <div class="card__header">
+      <div class="card__header" style="align-items: end">
         <div class="card__header-name">
             {{cardInfo.name + ', ' + cardInfo.number}}
         </div>
         <div v-if="cardInfo.icon !== undefined">
           <IconHearth class="card__icon" v-if="cardInfo.icon === 'hearth'" />
-          <IconCross class="svg-dark" v-if="cardInfo.icon === 'exit'" />
+          <IconCross class="svg-dark" style="width: 13px" v-if="cardInfo.icon === 'exit'" />
         </div>
         <IconHearthEmpty class="card__icon" v-else />
       </div>
@@ -18,12 +18,12 @@
       <!-- sub-header -->
       <div class="card__sub-header">
         <div>
-          <b>{{cardInfo.square}} M<sup>2</sup></b>
+          <b style="font-size: 14px">{{cardInfo.square}} M<sup>2</sup></b>
           <span class="card-text">Площадь</span>
         </div>
 
         <div>
-          <b>{{cardInfo.floor}}</b>
+          <b style="font-size: 14px">{{cardInfo.floor}}</b>
           <span class="card-text">Этаж</span>
         </div>
       </div>
@@ -37,22 +37,22 @@
 
       <!-- footer -->
       <div class="card__footer">
-        <div class="card__footer-top">
+        <div class="card__footer-top" style="align-items: flex-end">
 
           <div>
             <div class="card__footer-crossed card-text" v-if="cardInfo.oldPrice !== undefined">
               {{cardInfo.oldPrice + '\u20BD'.normalize()}}
             </div>
-            <div>
+            <div style="font-size: 16px">
               <b>{{cardInfo.price + '\u20BD'.normalize()}}</b>
             </div>
           </div>
 
-          <div class="card-text">{{cardInfo.priceForSquare}} / M<sup>2</sup></div>
+          <div class="card-text" style="font-size: 13px">{{cardInfo.priceForSquare}} / M<sup>2</sup></div>
         </div>
 
         <div class="card__footer-bottom">
-          <MultiElement/>
+          <MultiElement :selectors="cardInfo.tags" />
         </div>
       </div>
 
@@ -115,15 +115,17 @@ export default Vue.extend({
 @import "../../../assets/style/variables";
 .card{
 
+  font-family: 'Jost', sans-serif;
+
   width: 10vw;
   min-width: 300px;
   height: 100%;
 
-  padding: clamp(10px, 2vw ,40px);
+  padding: clamp(25px, 2vw ,40px);
 
   border-radius: 0;
 
-  background-color: $white-color;
+  background-color: $whiteF3-color;
 
   color: $one-base-color;
   display: flex;
@@ -133,13 +135,13 @@ export default Vue.extend({
   &__header{
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
 
     &-name{
       flex-wrap: wrap;
       font-weight: bold;
       color: $one-base-color;
+      text-transform: uppercase;
 
       display: flex;
       gap: 10px;
@@ -155,6 +157,8 @@ export default Vue.extend({
 
   &__body{
     display: flex;
+    padding-top: 35px;
+    padding-bottom: 30px;
     align-items: center;
     justify-content: center;
   }
@@ -185,7 +189,8 @@ export default Vue.extend({
   }
 
   &__icon{
-    fill: $one-base-color;
+    width: 15px;
+    fill: $gray-blue;
     cursor: pointer;
 
     &:hover{

@@ -43,7 +43,10 @@
 
       <div class="apartment-card__body-content__body_img" v-if="switcher[0].TabSelected">
         <div><IconArrowCircle class="apartment-card_icon-right"/></div>
-        <img :src="'Scheme_Apartment.png'" alt="t" class="apartment-card__body-content__body_img-picture">
+        <div class="apartment-card__body-content__body_img-box">
+          <IconZoom class="apartment-card_icon-zoom"/>
+          <img :src="'Scheme_Apartment.png'" alt="t" class="apartment-card__body-content__body_img-picture">
+        </div>
         <div><IconArrowCircle class="apartment-card_icon-left"/></div>
       </div>
 
@@ -77,6 +80,7 @@ import IconCompass from "~/components/icon/IconCompass.vue";
 import IconArrowCircle from "~/components/icon/IconArrowCircle.vue";
 import IconEye from "~/components/icon/IconEye.vue";
 import SwitcherTab from "~/components/UI/basic/SwitcherTab.vue";
+import IconZoom from "~/components/icon/IconZoom.vue";
 
 // interface Test{
 //
@@ -84,7 +88,7 @@ import SwitcherTab from "~/components/UI/basic/SwitcherTab.vue";
 
 export default Vue.extend({
   name: "ApartmentCard",
-  components: {SwitcherTab, IconEye, IconArrowCircle, IconCompass},
+  components: {IconZoom, SwitcherTab, IconEye, IconArrowCircle, IconCompass},
 
   data(){
     return {
@@ -202,16 +206,18 @@ export default Vue.extend({
           width: 100%;
 
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
 
           gap: 20px;
 
-          padding: 20px;
-          margin-right: -4vw;
+          &-box{
+            display: flex;
+            justify-content: center;
+          }
 
           &-picture {
-            width: 90%;
+            width: 50%;
             padding-left: 5%;
             height: auto;
             max-height: 700px;
@@ -277,6 +283,23 @@ export default Vue.extend({
 
       &:active {
         fill: $white-color !important;
+      }
+    }
+
+    &-zoom{
+      position: absolute;
+      top: 45%;
+      fill: $red;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      &:active {
+        opacity: 0.7;
       }
     }
   }
