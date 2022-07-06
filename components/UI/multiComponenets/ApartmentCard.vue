@@ -17,7 +17,7 @@
         <!--   Вид из окон   -->
         <div class="apartment-card__header_window" @click="$bvModal.show('window')">
           <IconEye />
-          Вид из окон
+          <b class="color-base" style="font-size: 15.5px">Вид из окон</b>
         </div>
         <!--   Icon   -->
         <div class="apartment-card__header_window-unshow">
@@ -154,7 +154,7 @@ export default Vue.extend({
       }
 
       &:hover{
-        opacity: 0.5;
+        opacity: 0.7;
       }
       &:active{
         opacity: 0.9;
@@ -287,8 +287,9 @@ export default Vue.extend({
     }
 
     &-zoom{
-      position: absolute;
-      top: 45%;
+      position: relative;
+      top: 100px;
+      left: 30%;
       fill: $red;
       width: 40px;
       height: 40px;

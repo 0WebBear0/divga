@@ -37,6 +37,7 @@ export default Vue.extend({
 
 .favorite-b{
   background: $one-base-darker-color;
+  fill: $white-color;
   border-radius: 100px;
   white-space: nowrap;
 
@@ -61,6 +62,7 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     min-width: 20px;
+
   }
 
   &__empty{

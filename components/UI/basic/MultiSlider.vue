@@ -2,21 +2,25 @@
   <div class="multi-slider">
     <div class="multi-slider__input-box">
 
-      <b-input-group :prepend="'От:'" class="multi-slider__input-box-item">
-        <b-input
+      <div class="multi-slider__input-box_item">
+        <p class="multi-slider__input-box_item-text">от</p>
+        <input
+          class="multi-slider__input-box_item-input"
           v-model="slider.minNow"
           type="number"
           @change="showPrice()"
-        />
-      </b-input-group>
+        >
+      </div>
 
-      <b-input-group :prepend="'До:'" class="multi-slider__input-box-item">
-        <b-input
+      <div class="multi-slider__input-box_item">
+        <p class="multi-slider__input-box_item-text">до</p>
+        <input
+          class="multi-slider__input-box_item-input"
           v-model="slider.maxNow"
           type="number"
           @change="showPrice()"
-        />
-      </b-input-group>
+        >
+      </div>
     </div>
     <div class="multi-slider__input-slider">
       <input
@@ -113,7 +117,6 @@ export default Vue.extend({
 @import "assets/style/variables";
 .multi-slider {
   width: 100%;
-  margin: auto;
   text-align: center;
   position: relative;
   height: 6em;
@@ -121,9 +124,33 @@ export default Vue.extend({
   &__input-box{
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    width: 100%;
+    &_item{
 
-    &-item{
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+
+      &-text{
+        position: relative;
+        top: 18%;
+        left: 15%;
+        cursor: pointer;
+
+        font-size: 14px;
+        color: rgb($white-color, 0.5);
+      }
+      &-input{
+        margin-left: -11%;
+        width: 100%;
+        padding-left: 33%;
+        background-color: rgb($white-color, 0);
+        color: rgb($white-color, 1);
+
+        border-color: $lines-color;
+        border-style: solid;
+        border-width: 0.5px;
+      }
     }
   }
 }
@@ -188,5 +215,25 @@ input[type=range]::-webkit-slider-thumb {
 }
 input::-webkit-slider-thumb{
   background-color: $accent-color;
+}
+
+
+//unshow arrow on number field
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+//focus on input
+[type="number"]:focus {
+  outline: none; /* Убираем контур */
+  border-color: #BAE0FD; /* Синяя рамка */
 }
 </style>

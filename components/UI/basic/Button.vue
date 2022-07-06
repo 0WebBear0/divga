@@ -36,7 +36,7 @@ export default Vue.extend({
 
 .m-button{
 
-  background-color: rgb($accent-color, 1);
+  background-color: $accent-color;
   text-transform: uppercase;
   color: $one-base-darker-color;
 
@@ -44,22 +44,25 @@ export default Vue.extend({
 
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   align-items: center;
   width: max-content;
 
   cursor: pointer;
 
   &__empty{
-    background-color: rgb($accent-color, 0);
+    background-color: $accent-color;
     border: 1px solid $gray;
     color: $white-color;
 
     &:hover{
-      background-color: rgb($gray, 0.5) !important;
+      background-color: $pink-dark !important;
+      opacity: 1;
     }
 
     &:active{
-      background-color: rgb($gray, 0.9) !important;
+      background-color: $accent-color !important;
+      opacity: 1;
     }
   }
 
@@ -72,11 +75,13 @@ export default Vue.extend({
   }
 
   &:hover{
-    background-color: rgb($accent-color, 0.5);
+    background-color: $pink-dark;
+    opacity: 1;
   }
 
   &:active{
-    background-color: rgb($accent-color,0.9);
+    background-color: $accent-color;
+    opacity: 1;
   }
 }
 </style>

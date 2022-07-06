@@ -372,6 +372,7 @@ export default {
       width: max-content;
       max-width: 25%;
       height: 100%;
+      z-index: 1;
     }
   }
 }

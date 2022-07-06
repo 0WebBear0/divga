@@ -105,6 +105,7 @@ export default Vue.extend({
   justify-content: space-evenly;
   gap: 15px;
 
+  cursor: pointer;
   &__first-part{
     display: flex;
     flex-direction: column;
@@ -176,8 +177,7 @@ export default Vue.extend({
   }
 
   &:hover{
-    opacity: 0.9;
-    cursor: pointer;
+    transform: scale(1.03);
   }
 }
 

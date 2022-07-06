@@ -44,6 +44,7 @@ export default Vue.extend({
   flex-wrap: wrap;
   width: 100%;
   gap: 10px;
+  text-transform: uppercase;
 
   &__item{
     border: 1px solid $lines-color;

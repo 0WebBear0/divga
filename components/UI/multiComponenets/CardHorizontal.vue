@@ -159,6 +159,7 @@ export default Vue.extend({
   justify-content: space-between;
   gap: 15px;
 
+  cursor: pointer;
   &-base{
     width: 100%;
 
@@ -174,6 +175,10 @@ export default Vue.extend({
     align-items: center;
     justify-content: space-evenly;
     gap: 15px;
+
+    &:hover{
+      transform: scale(1.03);
+    }
   }
 
   &_content{
@@ -259,11 +264,11 @@ export default Vue.extend({
   }
 
   &__icon{
-    fill: $one-base-color;
+    fill: rgb($one-base-color, 0.5);
     cursor: pointer;
 
     &:hover{
-      fill: $accent-color;
+      fill: $one-base-color;
     }
   }
 
@@ -275,10 +280,6 @@ export default Vue.extend({
     }
   }
 
-  &:hover{
-    opacity: 0.9;
-    cursor: pointer;
-  }
 }
 
 @media (max-width: 1200px) {

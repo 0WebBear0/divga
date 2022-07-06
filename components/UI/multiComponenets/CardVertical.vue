@@ -132,6 +132,8 @@ export default Vue.extend({
   flex-direction: column;
   gap: 15px;
 
+  cursor: pointer;
+
   &__header{
     display: flex;
     flex-direction: row;
@@ -199,8 +201,7 @@ export default Vue.extend({
   }
 
   &:hover{
-    opacity: 0.9;
-    cursor: pointer;
+    transform: scale(1.03);
   }
 }
 </style>

@@ -229,6 +229,10 @@ export default Vue.extend({
       color: rgb($white-color, 1);
       border: 0.5px solid $lines-color;
 
+      &:hover{
+        background-color: rgb($accent-color, 0.5);
+      }
+
       &-selected{
 
         width: clamp(20px, 5vw, 54px);
