@@ -130,20 +130,22 @@ export default Vue.extend({
     padding-bottom: 20px;
 
     &_subheader{
-
+      flex: 3;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      flex-wrap: wrap;
       gap: 20px;
 
+      padding-right: 10px;
     }
 
     &_window{
+      flex: 1;
       display: flex;
       flex-direction: row;
       align-items: center;
       cursor: pointer;
+      white-space: nowrap;
 
       font-size: 14px;
       gap: 10px;
@@ -246,9 +248,9 @@ export default Vue.extend({
 
     &-compass {
       height: 4vw;
-      min-height: 40px;
+      min-height: 80px;
       width: 4vw;
-      min-width: 40px;
+      min-width: 80px;
     }
 
     &-right {
@@ -348,6 +350,16 @@ export default Vue.extend({
     }
   }
 }
+@media (max-width: 700px) {
+  .apartment-card__header_subheader{
+    flex: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 
-
+    padding-right: 10px;
+  }
+}
 </style>

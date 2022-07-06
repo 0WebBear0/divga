@@ -51,7 +51,7 @@ export default Vue.extend({
   cursor: pointer;
 
   &__empty{
-    background-color: $accent-color;
+    background-color: rgb($accent-color, 0);
     border: 1px solid $gray;
     color: $white-color;
 

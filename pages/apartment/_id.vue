@@ -22,9 +22,9 @@
             <Favorites :favorite="{count: 0}" class="color-base_bg select-item" />
           </div>
 
-          <MultiElement :selectors="[{name: 'Два санузла'},{name: 'Лоджия'},{name: 'Чистовая отделка'}]" />
+          <MultiElement class="apartment__multi-selector" :selectors="[{name: 'Два санузла'},{name: 'Лоджия'},{name: 'Чистовая отделка'}]" />
 
-          <div class="mt-5">
+          <div class="mt-5 font-gilroy">
             <div class="apartment__info__price_crossed">
               15 000 000 ₽
             </div>
@@ -33,10 +33,11 @@
                 15 000 000 ₽
               </div>
 
-              <div class="opacity05 pb-1"> 2 222 / M<sup>2</sup></div>
+              <div class="opacity05 pb-1"> 2 222 / м<sup>2</sup></div>
             </div>
           </div>
         </div>
+
         <!--  карта при мобиле  -->
         <div class="apartment__card unshow-item text-dark">
           <ApartmentCard/>
@@ -45,10 +46,10 @@
         <div class="splitter mt-4 mb-1 opacity05"></div>
 
         <!-- Площадь и этажи  -->
-        <div class="apartment__info__floor">
+        <div class="apartment__info__floor font-gilroy">
 
           <div class="apartment__info__floor_item">
-            <div class="apartment__info__price_per-meter_price">35.25M<sup>2</sup></div>
+            <div class="apartment__info__price_per-meter_price">35.25м<sup>2</sup></div>
             <div class="opacity05 text-uppercase">Общая площадь</div>
           </div>
 
@@ -82,7 +83,7 @@
             </div>
           </div>
 
-          <div class="apartment__info__call_text">
+          <div class="apartment__info__call_text font-gilroy">
             Цены на сайте представлены для предварительного ознакомления и могут быть неактуальными.
             Используется динамическое ценообразование, в связи с чем цены на квартиры могут меняться в течение дня.
             Пожалуйста, уточняйте актуальные цены у менеджеров отдела продаж.
@@ -227,7 +228,7 @@ export default {
   width: 100%;
   height: 100%;
   min-height: 100vh;
-
+  color: $whiteF3-color;
 
   //разметка
 
@@ -247,11 +248,11 @@ export default {
 
   &__info{
     flex: 1;
-    padding: clamp(20px,3vw,60px) clamp(15px,3vw,60px) 0 clamp(20px,3vw,60px);
+    padding: clamp(20px,2.7vw,60px) clamp(15px,2.7vw,60px) 0 clamp(20px,2.7vw,60px);
 
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 
     &__nav-bar{
       display: flex;
@@ -260,7 +261,10 @@ export default {
       gap: 7px;
 
       cursor: pointer;
-      padding-bottom: 40px;
+      padding-bottom: 30px;
+
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
     }
 
     &__price{
@@ -285,7 +289,7 @@ export default {
 
       &_crossed{
         text-decoration: line-through;
-        color: $gray-blue;
+        color: $favorites-line;
       }
 
       &_per-meter{
@@ -430,6 +434,12 @@ export default {
       }
     }
   }
+  &__multi-selector{
+    text-transform: uppercase;
+    font-size: 14px;
+    color: $whiteF3-color;
+    font-weight: 300;
+  }
 }
 
 .show-item{
@@ -487,7 +497,7 @@ export default {
     display: none !important;
   }
   .unshow-item-mobile{
-    display: block;
+    display: block !important;
   }
 
 }
