@@ -358,7 +358,7 @@ export default {
       &__vertical{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: left;
         flex-wrap: wrap;
         gap: 20px;
 
@@ -419,6 +419,13 @@ export default {
         height: 100%;
       }
     }
+  }
+}
+
+@media (max-width: 1240px) {
+  .parameters__body__filter{
+    width: 30%;
+    min-width: 300px;
   }
 }
 

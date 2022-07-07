@@ -11,7 +11,16 @@
       <div class="font-gilroy pb-4">Наведите на этаж, чтобы увидеть доступные квартиры</div>
 
       <div class="picker__body-label">
-        <div class="text-select m-3">II кв. 2022 <div>сроки сдачи</div></div>
+
+        <!--    Top text    -->
+        <div class="text-select m-3 picker__body-label_text-top">
+          II кв. 2022
+          <div class="picker__body-label_text-bottom">
+            сроки сдачи
+          </div>
+        </div>
+
+        <!--    Parking place    -->
         <nuxt-link to="service-premises" class="style-none">
           <Button
             class="svg-dark svg-dark-over m-3 p-3"
@@ -82,10 +91,35 @@ export default Vue.extend({
       flex-direction: column;
       justify-content: space-between;
 
-      padding-top: 30px;
+      padding-top: 20px;
+      padding-left: 20px;
+
       width: 100%;
       height: max-content;
       min-height: 100vh;
+
+      &_text{
+
+        &-top{
+          font-family: Gilroy, sans-serif, serif;
+          font-size: 36px;
+          font-weight: 600;
+          line-height: 43px;
+          letter-spacing: 0.02em;
+          text-align: left;
+
+        }
+
+        &-bottom{
+          font-family: Gilroy, sans-serif, serif;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 29px;
+          letter-spacing: 0.02em;
+          text-align: left;
+        }
+      }
+
     }
   }
 }

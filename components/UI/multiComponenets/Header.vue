@@ -104,6 +104,9 @@ export default Vue.extend({
   white-space: nowrap;
   width: 100%;
 
+  text-transform: uppercase;
+
+
   &__title{
     font-family: 'Jost', serif;
     font-style: normal;

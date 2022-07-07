@@ -178,7 +178,7 @@ export default {
       width: 100%;
 
       display: flex;
-      justify-content: center;
+      justify-content: left;
 
       flex-direction: row;
       flex-wrap: wrap;

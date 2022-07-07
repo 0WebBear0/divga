@@ -24,7 +24,7 @@
 
           <MultiElement class="apartment__multi-selector" :selectors="[{name: 'Два санузла'},{name: 'Лоджия'},{name: 'Чистовая отделка'}]" />
 
-          <div class="mt-5 font-gilroy">
+          <div class="mt-3 font-gilroy">
             <div class="apartment__info__price_crossed">
               15 000 000 ₽
             </div>
@@ -33,7 +33,7 @@
                 15 000 000 ₽
               </div>
 
-              <div class="opacity05 pb-1"> 2 222 / м<sup>2</sup></div>
+              <div class="opacity05 pb-1" style="font-size: 16px; margin-bottom: 2px"> 2 222 / м<sup>2</sup></div>
             </div>
           </div>
         </div>
@@ -427,7 +427,7 @@ export default {
       &-box{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: left;
         gap: 10px;
         flex-wrap: wrap;
 
@@ -452,8 +452,11 @@ export default {
   display: none !important;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 988px) {
   .apartment{
+    &__info{
+      padding: 0;
+    }
     &__header{
       display: flex;
       flex-direction: column;
@@ -468,8 +471,45 @@ export default {
 }
 
 @media (max-width: 460px) {
+  .splitter{
+    margin: 1px;
+  }
   .apartment{
-    &__info__price_box-name{
+    &__info{
+      padding: 0;
+
+      &__nav-bar{
+        padding: 30px 10px 30px 10px;
+      }
+      &__price{
+        padding: 1px 10px 1px 10px;
+
+        &_box-name{
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
+        }
+
+        &_per-meter{
+          padding-bottom: 20px;
+        }
+      }
+      &__floor{
+        padding: 1px 11px 1px 11px;
+      }
+      &__call{
+        padding: 1px 11px 1px 11px;
+
+        &_stock-item{
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+      }
+    }
+
+
+    &__price_box-name{
       display: flex;
       flex-direction: row;
       justify-content: left;
@@ -487,6 +527,7 @@ export default {
       margin-bottom: 3%;
     }
     &__footer{
+      padding-top: 50px;
       padding-bottom: 80px;
     }
   }

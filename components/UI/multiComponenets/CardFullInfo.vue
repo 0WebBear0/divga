@@ -10,7 +10,7 @@
             {{ cardInfo.name }}, <span v-if="cardInfo.number !== undefined">{{ cardInfo.number }}</span>
           </div>
           <div v-if="cardInfo.tagPosition === 'top'">
-            <MultiElement :selectors="cardInfo.tags"/>
+            <MultiElement :selectors="cardInfo.tags" style="text-transform: uppercase"/>
           </div>
         </div>
         <div v-if="cardInfo.icon !== undefined" class="mt-1">
@@ -199,6 +199,8 @@ export default Vue.extend({
   }
 
   &__body {
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;

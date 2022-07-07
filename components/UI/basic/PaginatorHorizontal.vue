@@ -45,7 +45,7 @@ export default Vue.extend({
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  justify-content: center;
+  justify-content: left;
 
   width: 100%;
 

@@ -190,6 +190,8 @@ export default {
           justify-content: center;
           align-items: center;
 
+          margin-left: 30px;
+          margin-top: 40px;
           margin-right: -4vw;
 
           &-picture{
@@ -271,6 +273,9 @@ export default {
     }
   }
   &_icon-compass{
+    margin-left: 40px;
+    min-width: 40px;
+    min-height: 40px;
     height: 4vw;
     width: 4vw;
   }

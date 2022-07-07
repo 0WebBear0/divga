@@ -68,10 +68,11 @@ export default Vue.extend({
     &-selected {
       display: flex;
       color: $one-base-color;
+      font-weight: bold;
       margin-top: -0.5px;
       margin-right: -1px;
-      border: 1px solid $select-color;
-      background-color: $select-color;
+      border: 1px solid $whiteF3-color;
+      background-color: $whiteF3-color;
       border-radius: 100px;
     }
   }

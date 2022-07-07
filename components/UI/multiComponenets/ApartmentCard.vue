@@ -16,8 +16,8 @@
 
         <!--   Вид из окон   -->
         <div class="apartment-card__header_window" @click="$bvModal.show('window')">
-          <IconEye />
-          <b class="color-base" style="font-size: 15.5px">Вид из окон</b>
+          <IconEye class="apartment-card__header_window-view_eye" />
+          <b class="color-base apartment-card__header_window-view" >Вид из окон</b>
         </div>
         <!--   Icon   -->
         <div class="apartment-card__header_window-unshow">
@@ -67,7 +67,7 @@
 
 
     <!--  Modal window  -->
-    <b-modal id="window" size="xl" hide-footer content-class="apartment-card_window">
+    <b-modal id="window" size="xl" hide-footer hide-header content-class="apartment-card_window">
       <img :src="'Window.png'" alt="t" class="apartment-card_window_img">
       <div class="text-dark apartment-card_window_text">Видовые характеристики указаны приблизительно для предварительного ознакомления.</div>
     </b-modal>
@@ -116,6 +116,7 @@ export default Vue.extend({
 })
 </script>
 
+
 <style scoped lang="scss">
 @import "assets/style/variables";
 
@@ -135,7 +136,6 @@ export default Vue.extend({
       flex-direction: row;
       justify-content: space-between;
       gap: 20px;
-
       padding-right: 10px;
     }
 
@@ -150,6 +150,15 @@ export default Vue.extend({
       font-size: 14px;
       gap: 10px;
       text-decoration: underline;
+
+      &-view{
+        font-size: 15.5px;
+
+        &_eye{
+          min-width: 20px !important;
+          min-height: 20px !important;
+        }
+      }
 
       &-unshow{
         display: none;
@@ -309,7 +318,9 @@ export default Vue.extend({
 
   &_switcher{
 
-    font-size: clamp(8px, 3vw, 12px);
+    font-family: 'Jost', sans-serif, serif;
+    font-weight: 500;
+    font-size: clamp(8px, 3vw, 14px);
   }
 
   &_window{
@@ -327,29 +338,13 @@ export default Vue.extend({
   }
 }
 
-@media (max-width: 460px) {
-  .apartment {
-
-    &-card {
-      &__header_window-unshow {
-        display: block;
-      }
-
-      &__header_window-show {
-        display: none;
-      }
-
-      &__header_switcher {
-        display: flex;
-        justify-content: center;
-      }
-
-      &__body-content__body_img{
-        width: 80%;
-      }
-    }
+@media (max-width: 1280px) {
+  .apartment-card__header_subheader{
+    display: flex;
+    flex-wrap: wrap;
   }
 }
+
 @media (max-width: 700px) {
   .apartment-card__header_subheader{
     flex: 3;
@@ -362,4 +357,57 @@ export default Vue.extend({
     padding-right: 10px;
   }
 }
+
+@media (max-width: 460px) {
+  .apartment {
+
+    &-card {
+      padding-bottom: 30px;
+
+      &_icon-zoom{
+        min-height: 40px;
+        min-width: 40px;
+        left: 45%;
+      }
+
+      &__header_window {
+
+        &-view {
+          font-size: 12px;
+        }
+
+        &-unshow {
+          display: block;
+        }
+
+        &-show {
+          display: none;
+        }
+      }
+
+      &__header_switcher {
+        display: flex;
+        justify-content: center;
+      }
+
+      &__body-content__body {
+
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        &_img {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+
+          &-picture {
+            margin-left: -40px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
 </style>

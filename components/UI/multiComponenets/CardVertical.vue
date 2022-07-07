@@ -118,7 +118,7 @@ export default Vue.extend({
   font-family: 'Jost', sans-serif;
 
   width: 10vw;
-  min-width: 300px;
+  min-width: 280px;
   height: 100%;
 
   padding: clamp(25px, 2vw ,40px);
