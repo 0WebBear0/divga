@@ -1,25 +1,28 @@
 <template>
   <div class="card">
-    <!-- 1 part -->
-    <div class="card__first-part">
-      <div class="card-big-text font-weight-bold">1, 2, 3 Комнатные</div>
-      <div class="card-text">До 15 000 000{{'\u20BD'.normalize()}}</div>
-    </div>
-    <div class="splitter-vertical color-blue opacity05"></div>
 
-    <!-- center place -->
-    <div class="card__body">
-      <div class="card__body_item">
-        <div class="card-big-text font-weight-bold">от 46 до 64.2 м2</div>
-        <div class="card-text">площадь</div>
+    <div class="card-first_box">
+      <!-- 1 part -->
+      <div class="card__first-part">
+        <div class="card-big-text font-weight-bold">1, 2, 3 Комнатные</div>
+        <div class="card-text">До 15 000 000{{'\u20BD'.normalize()}}</div>
       </div>
+      <div class="splitter-vertical color-blue opacity05"></div>
 
-      <div class="card__body_item">
-        <div class="card-big-text font-weight-bold">от 100 до 500</div>
-        <div class="card-text">еще цифровой параметр</div>
+      <!-- center place -->
+      <div class="card__body">
+        <div class="card__body_item">
+          <div class="card-big-text font-weight-bold">от 46 до 64.2 м2</div>
+          <div class="card-text">площадь</div>
+        </div>
+
+        <div class="card__body_item">
+          <div class="card-big-text font-weight-bold">от 100 до 500</div>
+          <div class="card-text">еще цифровой параметр</div>
+        </div>
       </div>
+      <div class="splitter-vertical color-blue opacity05"></div>
     </div>
-    <div class="splitter-vertical color-blue opacity05"></div>
 
     <!-- center place -->
     <div class="card__multi-elements">
@@ -32,7 +35,7 @@
       <Button :params="{name:'Искать', icon: null}" class="card__favorite_search"/>
       <IconCross class="svg-dark card_exit"/>
     </div>
-
+      <IconCross class="svg-dark exit_absolute show"/>
   </div>
 </template>
 
@@ -88,11 +91,19 @@ export default Vue.extend({
 <style scoped lang="scss">
 @import "../../../assets/style/variables";
 
+.exit_absolute{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+}
+
 .card{
 
   width: 100%;
 
-  padding: clamp(10px, 2vw ,40px);
+  padding: clamp(20px, 2vw ,40px);
 
   border-radius: 0;
 
@@ -106,6 +117,14 @@ export default Vue.extend({
   gap: 15px;
 
   cursor: pointer;
+
+  &-first_box{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 15px;
+  }
   &__first-part{
     display: flex;
     flex-direction: column;
@@ -180,14 +199,70 @@ export default Vue.extend({
     transform: scale(1.03);
   }
 }
+.show{
+  display: none;
+}
+
+@media (max-width: 960px) {
+
+}
 
 @media (max-width: 640px) {
+  .show{
+    display: flex;
+  }
+  .card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: start;
+    padding-left: 20px;
+
+    &_exit{
+      display: none;
+    }
+
+    &__multi-elements{
+      display: flex;
+      justify-content: start;
+      max-width: 100%;
+    }
+
+    &-first_box{
+      display: flex;
+      align-items: start;
+    }
+
+    &__body{
+      display: flex;
+      flex-direction: column;
+
+      &-floor {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 7px;
+      }
+      &-end_price{
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+  .splitter-vertical{
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
   .card{
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: start;
     padding-left: 20px;
+    padding-top: 20px;
 
     &_exit{
       display: none;

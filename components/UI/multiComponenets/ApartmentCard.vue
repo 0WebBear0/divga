@@ -42,12 +42,19 @@
     <div class="apartment-card__body-content__body">
 
       <div class="apartment-card__body-content__body_img" v-if="switcher[0].TabSelected">
-        <div><IconArrowCircle class="apartment-card_icon-right"/></div>
+
+        <div>
+          <IconArrowCircle class="apartment-card_icon-right"/>
+        </div>
+
         <div class="apartment-card__body-content__body_img-box">
           <IconZoom class="apartment-card_icon-zoom"/>
           <img :src="'Scheme_Apartment.png'" alt="t" class="apartment-card__body-content__body_img-picture">
         </div>
-        <div><IconArrowCircle class="apartment-card_icon-left"/></div>
+
+        <div>
+          <IconArrowCircle class="apartment-card_icon-left"/>
+        </div>
       </div>
 
       <div v-else-if="switcher[1].TabSelected">
@@ -228,7 +235,7 @@ export default Vue.extend({
           }
 
           &-picture {
-            width: 50%;
+            width: 80%;
             padding-left: 5%;
             height: auto;
             max-height: 700px;
@@ -299,8 +306,8 @@ export default Vue.extend({
 
     &-zoom{
       position: relative;
-      top: 100px;
-      left: 30%;
+      top: 200px;
+      left: 50%;
       fill: $red;
       width: 40px;
       height: 40px;
@@ -368,6 +375,7 @@ export default Vue.extend({
         min-height: 40px;
         min-width: 40px;
         left: 45%;
+        top: 100px;
       }
 
       &__header_window {

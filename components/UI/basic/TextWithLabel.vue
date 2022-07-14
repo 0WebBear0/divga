@@ -1,10 +1,12 @@
 <template>
   <div class="text-with-label">
+
     <div
       :id="elementId +'__'+ itemId"
       class="text-with-label__text">
       {{text}}
     </div>
+
     <!-- Попап с позиционированием -->
     <div v-show="popupShow" :id="popupId +'__'+ itemId" class="text-with-label__popup">
       <div>
@@ -25,10 +27,13 @@
 
     <div
       class="text-with-label__text-body text-select"
-      v-for="texts in textBody"
+      v-for="(texts, index) in textBody"
+      :class="{'text-with-label__text' : index !== 0}"
       @click="openClosePopup()"
     >
+
       {{texts}}
+
     </div>
     <slot/>
   </div>
@@ -121,7 +126,7 @@ export default Vue.extend ({
   width: 100%;
 
   &__text {
-    color: rgba($white-color, 0.5);
+    color: rgba($white-color, 0.5) !important;
     text-transform: uppercase;
 
     &-body{

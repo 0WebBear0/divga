@@ -1,11 +1,82 @@
 <template>
   <div>
-    <div class="card">
+    <div class="card-box">
 
-      <!-- header -->
-      <div class="card__header" style="align-items: end">
-        <div class="card__header-name">
+      <div class="card">
+        <!-- header -->
+        <div class="card__header" style="align-items: end">
+          <div class="card__header-name">
             {{cardInfo.name + ', ' + cardInfo.number}}
+          </div>
+          <div v-if="cardInfo.icon !== undefined" class="show">
+            <IconHearth class="card__icon" v-if="cardInfo.icon === 'hearth'" />
+            <IconCross class="svg-dark" style="width: 13px" v-if="cardInfo.icon === 'exit'" />
+          </div>
+          <IconHearthEmpty class="card__icon show" v-else />
+        </div>
+        <div class="splitter color-blue opacity05"></div>
+
+        <!-- sub-header -->
+        <div class="card__sub-header show">
+          <div>
+            <b style="font-size: 14px">{{cardInfo.square}} M<sup>2</sup></b>
+            <span class="card-text">Площадь</span>
+          </div>
+
+          <div>
+            <b style="font-size: 14px">{{cardInfo.floor}}</b>
+            <span class="card-text">Этаж</span>
+          </div>
+        </div>
+        <div class="splitter color-blue opacity05 show"></div>
+
+        <div class="card__sub-header unshow flex-column">
+          <div class="justify-content-start d-flex w-100">
+            <b style="font-size: 14px">{{cardInfo.square}} M<sup>2</sup></b>
+            <span class="card-text">Площадь</span>
+          </div>
+
+          <div class="splitter color-blue opacity05 w-100 mt-2"></div>
+          <div class="mt-2 justify-content-start d-flex w-100">
+            <b style="font-size: 14px">{{cardInfo.floor}}</b>
+            <span class="card-text">Этаж</span>
+          </div>
+          <div class="splitter color-blue opacity05 w-100 mt-2"></div>
+        </div>
+
+
+
+        <!-- body -->
+        <div class="card__body show">
+          <img :src="cardInfo.imgSrc" alt="t">
+        </div>
+        <div class="splitter color-blue opacity05 show"></div>
+
+        <!-- footer -->
+        <div class="card__footer">
+          <div class="card__footer-top" style="align-items: flex-end">
+
+            <div>
+              <div class="card__footer-crossed card-text" v-if="cardInfo.oldPrice !== undefined">
+                {{cardInfo.oldPrice + '\u20BD'.normalize()}}
+              </div>
+              <div style="font-size: 16px">
+                <b>{{cardInfo.price + '\u20BD'.normalize()}}</b>
+              </div>
+            </div>
+
+            <div class="card-text" style="font-size: 13px">{{cardInfo.priceForSquare}} / M<sup>2</sup></div>
+          </div>
+
+          <div class="card__footer-bottom">
+            <MultiElement :selectors="cardInfo.tags" />
+          </div>
+        </div>
+
+      </div>
+      <div class="unshow">
+        <div class="card__body">
+          <img :src="cardInfo.imgSrc" alt="t">
         </div>
         <div v-if="cardInfo.icon !== undefined">
           <IconHearth class="card__icon" v-if="cardInfo.icon === 'hearth'" />
@@ -13,49 +84,6 @@
         </div>
         <IconHearthEmpty class="card__icon" v-else />
       </div>
-      <div class="splitter color-blue opacity05"></div>
-
-      <!-- sub-header -->
-      <div class="card__sub-header">
-        <div>
-          <b style="font-size: 14px">{{cardInfo.square}} M<sup>2</sup></b>
-          <span class="card-text">Площадь</span>
-        </div>
-
-        <div>
-          <b style="font-size: 14px">{{cardInfo.floor}}</b>
-          <span class="card-text">Этаж</span>
-        </div>
-      </div>
-      <div class="splitter color-blue opacity05"></div>
-
-      <!-- body -->
-      <div class="card__body">
-        <img :src="cardInfo.imgSrc" alt="t">
-      </div>
-      <div class="splitter color-blue opacity05"></div>
-
-      <!-- footer -->
-      <div class="card__footer">
-        <div class="card__footer-top" style="align-items: flex-end">
-
-          <div>
-            <div class="card__footer-crossed card-text" v-if="cardInfo.oldPrice !== undefined">
-              {{cardInfo.oldPrice + '\u20BD'.normalize()}}
-            </div>
-            <div style="font-size: 16px">
-              <b>{{cardInfo.price + '\u20BD'.normalize()}}</b>
-            </div>
-          </div>
-
-          <div class="card-text" style="font-size: 13px">{{cardInfo.priceForSquare}} / M<sup>2</sup></div>
-        </div>
-
-        <div class="card__footer-bottom">
-          <MultiElement :selectors="cardInfo.tags" />
-        </div>
-      </div>
-
     </div>
   </div>
 </template>
@@ -115,24 +143,42 @@ export default Vue.extend({
 @import "../../../assets/style/variables";
 .card{
 
-  font-family: 'Jost', sans-serif;
 
-  width: 10vw;
-  min-width: 280px;
-  height: 100%;
-
-  padding: clamp(25px, 2vw ,40px);
-
-  border-radius: 0;
-
-  background-color: $whiteF3-color;
-
-  color: $one-base-color;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  background-color: $whiteF3-color;
 
-  cursor: pointer;
+  width: 5vw;
+  min-width: 240px;
+  height: 100%;
+
+  border: none;
+
+  &-box{
+    font-family: 'Jost', sans-serif;
+
+    width: 100%;
+    height: 100%;
+
+    padding: clamp(25px, 2vw ,40px);
+
+    border-radius: 0;
+
+    background-color: $whiteF3-color;
+
+    color: $one-base-color;
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+    &:hover{
+      transform: scale(1.03);
+    }
+  }
 
   &__header{
     display: flex;
@@ -200,8 +246,47 @@ export default Vue.extend({
     }
   }
 
-  &:hover{
-    transform: scale(1.03);
+}
+.unshow{
+  display: none;
+}
+
+@media (min-width: 1640px) {
+  .card{
+    width: 22vw;
   }
 }
+
+@media (max-width: 660px) {
+  .show{
+    display: none;
+  }
+  .unshow{
+    display: flex;
+  }
+  .card{
+    min-width: 140px;
+    width: 100%;
+
+    &-box{
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__body{
+      width: 100%;
+    }
+  }
+}
+
+
+@media (max-width: 440px) {
+  .show{
+    display: flex;
+  }
+  .unshow{
+    display: none;
+  }
+}
+
 </style>

@@ -3,7 +3,7 @@
     <Header>
       <div class="picker__header">
         <TextWithLabel text="Вид:" :text-body="['3D план', '2D план']" />
-        <nuxt-link to="favorites" class="style-none"><Favorites :favorite="{count: 1}"/></nuxt-link>
+        <nuxt-link to="favorites" class="style-none"><Favorites :favorite="{count: 0}"/></nuxt-link>
       </div>
     </Header>
 
@@ -85,7 +85,7 @@ export default Vue.extend({
     height: 100%;
 
     &-label{
-      background: url("static/Build1.png");
+      background: no-repeat url("static/Build1.png");
 
       display: flex;
       flex-direction: column;
@@ -95,8 +95,7 @@ export default Vue.extend({
       padding-left: 20px;
 
       width: 100%;
-      height: max-content;
-      min-height: 100vh;
+      height: 930px;
 
       &_text{
 

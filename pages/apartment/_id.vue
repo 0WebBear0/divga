@@ -423,7 +423,9 @@ export default {
     }
 
     &_card{
+
       height: 100%;
+
       &-box{
         display: flex;
         flex-direction: row;
@@ -454,9 +456,40 @@ export default {
 
 @media (max-width: 988px) {
   .apartment{
+
     &__info{
       padding: 0;
+
+      &__nav-bar{
+        padding: 30px 20px 30px 20px;
+      }
+      &__price{
+        padding: 1px 20px 1px 20px;
+
+        &_box-name{
+          display: flex;
+          flex-direction: row;
+          gap: 1px;
+        }
+
+        &_per-meter{
+          padding-bottom: 20px;
+        }
+      }
+      &__floor{
+        padding: 1px 20px 1px 20px;
+      }
+      &__call{
+        padding: 1px 20px 1px 20px;
+
+        &_stock-item{
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+        }
+      }
     }
+
     &__header{
       display: flex;
       flex-direction: column;
@@ -470,11 +503,25 @@ export default {
   }
 }
 
+@media (max-width: 660px) {
+
+  .apartment__footer_card-box{
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
 @media (max-width: 460px) {
+  .apartment__footer_card-box{
+    display: flex;
+    justify-content: center;
+  }
   .splitter{
     margin: 1px;
   }
   .apartment{
+
     &__info{
       padding: 0;
 
@@ -508,7 +555,6 @@ export default {
       }
     }
 
-
     &__price_box-name{
       display: flex;
       flex-direction: row;
@@ -517,6 +563,7 @@ export default {
       flex-wrap: wrap;
       gap: 20px;
     }
+
     &_call-to-as{
       position: fixed;
       bottom: 0;

@@ -224,4 +224,11 @@ export default {
     }
   }
 }
+
+@media (max-width: 660px) {
+  .favorite__body_cards{
+    display: flex;
+    justify-content: center;
+  }
+}
 </style>
