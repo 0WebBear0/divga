@@ -1,7 +1,7 @@
 <template>
   <div class="parameters">
     <Header :underline="false">
-      <div class="parameters__header">
+      <div class="parameters__header" >
         <TextWithLabel text="Найдено:" :text-body="['27 квартир']" />
         <TextWithLabel item-id="sort" text="Сортировка:" :popup-item="popup" :text-body="['Цена по возрастанию']" />
         <UsersView text="Вид" @clicked="(data) => this.typeRender = data" />
@@ -15,7 +15,7 @@
     </Header>
 
     <div class="parameters__header-adaptive">
-      <div class="parameters__header-adaptive_bottom">
+      <div class="parameters__header-adaptive_bottom show-item-mobile">
         <div class="parameters__header-adaptive_labels">
           <TextWithLabel text="Найдено:" :text-body="['27 квартир']" />
           <TextWithLabel item-id="sort" text="Сортировка:" :popup-item="popup" :text-body="['Цена по возрастанию']" />
@@ -24,11 +24,42 @@
       </div>
     </div>
 
-    <div class="splitter mt-4 mb-4"></div>
+    <div class="splitter mt-4 mb-4 show-item-mobile"></div>
 
     <!--  Начало контента  -->
-    <div class="parameters__body">
+    <div class="parameters__body mt-1">
       <FilterPicker class="parameters__body__filter"/>
+
+      <!-- down Filter -->
+      <div class="unshow-item-mobile find-div">
+        <div class="find-div__text">
+          Найдено 27 квартир
+        </div>
+        <div class="splitter"></div>
+        <div class="find-div__icons">
+          <div class="find-div__icons_box">
+            <IconSort class="svg-dark card__icon find-div__icons"/>
+            <UsersView class="find-div__icons" @clicked="(data) => this.typeRender = data"/>
+          </div>
+        </div>
+      </div>
+
+      <!--  middle -->
+
+      <div class="unshow-item-mobile-middle">
+
+        <div class="unshow-item-mobile-middle_item">
+          <TextWithLabel text="Найдено:" :text-body="['27 квартир']" />
+          <TextWithLabel item-id="sort" text="Сортировка:" :popup-item="popup" :text-body="['Цена по возрастанию']" />
+        </div>
+
+        <div class="unshow-item-mobile-middle_item">
+          <nuxt-link to="favorites" class="style-none"><Favorites :favorite="{count: 1}"/></nuxt-link>
+          <UsersView text="Вид" class="justify-content-end" @clicked="(data) => this.typeRender = data" />
+        </div>
+
+      </div>
+
       <div class="font-gilroy w-100">
         <div v-if="typeRender" class="parameters__body__cards__vertical">
           <div v-for="(item,index) in cardInfo">
@@ -69,12 +100,14 @@ import FilterPicker from "@/components/UI/multiComponenets/FilterPicker";
 import CardVertical from "@/components/UI/multiComponenets/CardVertical";
 import CardHorizontal from "@/components/UI/multiComponenets/CardHorizontal";
 import PaginatorHorizontal from "@/components/UI/basic/PaginatorHorizontal";
+import IconSort from "@/components/icon/IconSort";
 
 
 export default {
   name: "parameters",
 
   components: {
+    IconSort,
     PaginatorHorizontal,
     CardHorizontal, CardVertical, FilterPicker, UsersView, TextWithLabel, Favorites, LinkedList, Header},
 
@@ -385,7 +418,13 @@ export default {
   display: none !important;
 }
 
-@media (max-width: 1390px) {
+.parameters__header{
+  display: flex;
+  flex: 2;
+}
+
+
+@media (max-width: 1430px) {
   .parameters {
 
     &__header {
@@ -425,14 +464,12 @@ export default {
 }
 
 @media (max-width: 1240px) {
+
   .parameters__body__filter{
     width: 30%;
     min-width: 300px;
   }
-  .parameters__header{
-    width: 100%;
-    flex: 2;
-  }
+
 }
 
 @media (max-width: 960px) {
@@ -442,7 +479,6 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
 
       &__filter{
         display: flex;
@@ -458,11 +494,34 @@ export default {
   }
 }
 
-@media (max-width: 480px) {
+.unshow-item-mobile-middle{
+  display: none !important;
+}
 
-  .header__selection{
-    display: none !important;
+@media (max-width: 640px) {
+  .parameters__body__cards__vertical{
+    display: flex;
+    justify-content: center;
   }
+  .show-item-mobile{
+    display: none;
+  }
+  .unshow-item-mobile-middle{
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &_item{
+      display: flex;
+      gap: 20px;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
+
+
+@media (max-width: 480px) {
 
   .parameters {
     &__header {
@@ -491,7 +550,9 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: center;
-
+      &__cards__vertical{
+        justify-content: center;
+      }
       &__filter{
         width: 100%;
       }
@@ -507,9 +568,15 @@ export default {
   .show-item-mobile{
     display: none;
   }
+
+  .unshow-item-mobile-middle{
+    display: none !important;
+  }
+
   .unshow-item-mobile{
     display: flex !important;
   }
+
   .parameters__favorite_absolute{
     display: flex;
     flex-direction: row;
@@ -522,6 +589,30 @@ export default {
 
     margin-bottom: 10px;
     margin-right: 10px;
+  }
+
+  .find-div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__text{
+      font-size: 22px;
+    }
+
+    &__icons{
+      display: flex;
+      justify-content: end;
+
+      &_box{
+        display: flex;
+      }
+      svg{
+        min-height: 25px !important;
+        min-width: 25px !important;
+      }
+
+    }
   }
 }
 </style>

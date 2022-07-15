@@ -10,7 +10,7 @@
           {{item.name}}
         </div>
       </div>
-      <IconArrowCircle class="paginator-horiz-icon"/>
+      <IconArrowCircle class="ml-2 paginator-horiz-icon"/>
     </div>
   </div>
 </template>
@@ -78,11 +78,13 @@ export default Vue.extend({
     fill: $favorites-line;
 
     width: 100%;
+
     min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.25s ease-out;
 
     &:hover{
       fill: rgb($black-color,0.3);

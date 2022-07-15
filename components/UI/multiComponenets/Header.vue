@@ -133,6 +133,16 @@ export default Vue.extend({
   }
 }
 
+@media (max-width: 640px) {
+
+  .header__selection{
+    display: none !important;
+  }
+  .header__selection-show{
+    display: flex !important;
+  }
+}
+
 @media (max-width: 480px) {
 
   .header__selection{

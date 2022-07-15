@@ -37,6 +37,7 @@ svg{
     text-decoration: none !important;
     color: $white-color;
     align-items: center;
+    transition: transform 0.25s ease-out;
 
     &:hover{
       color: $accent-color !important;
@@ -60,6 +61,7 @@ svg{
   color: rgba($white-color,0.5);
   fill: rgba($white-color,0.5);
   align-items: center;
+  transition: all 0.25s ease-out;
 
   &__selected{
     fill: $accent-color;
@@ -79,6 +81,7 @@ svg{
   fill: $gray;
   min-width: 16px;
   min-height: 16px;
+  transition: all 0.25s ease-out;
 
   &-over{
     fill: $one-base-color;
@@ -149,6 +152,7 @@ svg{
 
 .select-any{
   cursor: pointer;
+  transition: all 0.25s ease-out;
 
   &:hover{
     opacity: 0.6;

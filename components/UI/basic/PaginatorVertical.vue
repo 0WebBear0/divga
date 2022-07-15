@@ -82,6 +82,7 @@ export default Vue.extend({
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.25s ease-out;
 
     &:hover{
       fill: rgb($black-color,0.3);

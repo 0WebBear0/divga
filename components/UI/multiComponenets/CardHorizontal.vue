@@ -156,7 +156,7 @@ export default Vue.extend({
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 15px;
 
   cursor: pointer;
@@ -175,6 +175,7 @@ export default Vue.extend({
     align-items: center;
     justify-content: space-evenly;
     gap: 15px;
+    transition: all 0.25s ease-out;
 
     &:hover{
       transform: scale(1.03);
@@ -184,7 +185,7 @@ export default Vue.extend({
   &_content{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
 
@@ -255,6 +256,7 @@ export default Vue.extend({
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-right: 40px;
   }
 
   &-text{
@@ -266,6 +268,9 @@ export default Vue.extend({
   &__icon{
     fill: rgb($one-base-color, 0.5);
     cursor: pointer;
+
+    min-height: 20px;
+    min-width: 20px;
 
     &:hover{
       fill: $one-base-color;
@@ -280,8 +285,10 @@ export default Vue.extend({
     }
   }
 
+  &__img{
+    padding-right: 20px;
+  }
 }
-
 @media (max-width: 1200px) {
   .unshow-item-mobile{
     display: none;
@@ -298,6 +305,7 @@ export default Vue.extend({
 
       &-table{
         width: 100%;
+        padding-left: 10px;
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -314,6 +322,16 @@ export default Vue.extend({
       }
     }
   }
+}
+
+@media (max-width: 1160px) {
+  .card__favorite{
+    padding-right: 5px;
+  }
+}
+
+@media (max-width: 960px) {
+
 }
 
 @media (max-width: 680px) {

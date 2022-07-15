@@ -175,6 +175,8 @@ export default Vue.extend({
     flex-direction: row;
     gap: 30px;
 
+    transition: transform 0.25s ease-out;
+
     &:hover{
       transform: scale(1.03);
     }

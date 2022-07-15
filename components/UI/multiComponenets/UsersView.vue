@@ -43,9 +43,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .user-view{
   display: flex;
   gap: clamp(5px, 3vw, 15px);
+  svg{
+    min-height: 20px !important;
+    min-width: 20px !important;
+  }
 }
 </style>

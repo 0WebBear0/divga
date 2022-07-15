@@ -54,6 +54,7 @@ export default Vue.extend({
     background-color: rgb($accent-color, 0);
     border: 1px solid $gray;
     color: $white-color;
+    transition: all 0.25s ease-out;
 
     &:hover{
       background-color: $pink-dark !important;

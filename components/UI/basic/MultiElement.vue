@@ -48,6 +48,7 @@ export default Vue.extend({
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    transition: all 0.25s ease-out;
 
     &:hover{
       opacity: 0.8;

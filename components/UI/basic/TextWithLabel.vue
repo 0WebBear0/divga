@@ -176,6 +176,7 @@ export default Vue.extend ({
         transform: rotate(45deg) scaleZ(-1);
         z-index: -1;
       }
+      transition: all 0.25s ease-out;
 
       &:active{
         color: rgb($white-color, 0.5) !important;
