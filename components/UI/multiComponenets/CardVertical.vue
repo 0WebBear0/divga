@@ -19,12 +19,12 @@
         <!-- sub-header -->
         <div class="card__sub-header show">
           <div>
-            <b style="font-size: 14px">{{cardInfo.square}} M<sup>2</sup></b>
+            <b>{{cardInfo.square}} M<sup>2</sup></b>
             <span class="card-text">Площадь</span>
           </div>
 
           <div>
-            <b style="font-size: 14px">{{cardInfo.floor}}</b>
+            <b>{{cardInfo.floor}}</b>
             <span class="card-text">Этаж</span>
           </div>
         </div>
@@ -60,12 +60,12 @@
               <div class="card__footer-crossed card-text" v-if="cardInfo.oldPrice !== undefined">
                 {{cardInfo.oldPrice + '\u20BD'.normalize()}}
               </div>
-              <div style="font-size: 16px">
+              <div>
                 <b>{{cardInfo.price + '\u20BD'.normalize()}}</b>
               </div>
             </div>
 
-            <div class="card-text" style="font-size: 13px">{{cardInfo.priceForSquare}} / M<sup>2</sup></div>
+            <div class="card-text">{{cardInfo.priceForSquare}} / M<sup>2</sup></div>
           </div>
 
           <div class="card__footer-bottom">
@@ -253,7 +253,21 @@ export default Vue.extend({
 
 @media (min-width: 1640px) {
   .card{
-    width: 22vw;
+    width: 18vw;
+    height: 100%;
+
+    display: flex;
+    gap: 25px;
+
+    font-size: 1.5rem !important;
+
+    &-text{
+      font-size: 1.5rem !important;
+    }
+  }
+  .card__icon{
+    width: 30px;
+    height: 30px;
   }
 }
 

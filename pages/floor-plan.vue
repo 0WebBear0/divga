@@ -8,6 +8,29 @@
 
     <div class="floor-plan__body">
 
+      <div class="unshow floor-plan__body-card_info">
+        <div class="floor-plan__body-card_text">Выберите апартаменты на плане этажа</div>
+
+        <div class="d-flex">
+          <div class="floor-plan__body-card_item color-green_bg">
+            Свободны
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <div class="floor-plan__body-card_item color-red_bg">
+            Забронированы
+          </div>
+        </div>
+
+        <div class="d-flex">
+          <div class="floor-plan__body-card_item color-gray_bg">
+            Проданы
+          </div>
+        </div>
+
+      </div>
+
       <!-- План объекта и Пагинатор -->
       <div class="floor-plan__body-apartment" @click="cardShow = !cardShow">
 
@@ -48,7 +71,7 @@
       </div>
 
       <!-- Показ апартаментов на плане и карточка -->
-      <div v-if="cardShow" class="floor-plan__body-card">
+      <div v-if="cardShow" class="show floor-plan__body-card" >
         <div class="floor-plan__body-card_text">Выберите апартаменты на плане этажа</div>
 
         <div class="d-flex">
@@ -70,9 +93,10 @@
         </div>
 
       </div>
+
       <!-- Карта парковок -->
       <CardFullInfo
-        class="floor-plan__body-card"
+        class="floor-plan__body-card show"
         v-else
         :card-info="cardInfo"
       />
@@ -120,7 +144,7 @@ export default {
 
   methods: {
     redirect(){
-      if (window.screen.width < 960){
+      if (window.screen.width < 708){
         this.$router.push('/parameters')
       }
     }
@@ -238,9 +262,9 @@ export default {
 
     &-card{
       width: 43%;
+      height: auto;
       background-color: $one-base-darker-color;
       display: flex;
-      padding-bottom: 30px;
       flex-direction: column;
       justify-content: left;
       gap: 10px;
@@ -273,11 +297,63 @@ export default {
     }
   }
   &_icon-compass{
-    margin-left: 40px;
+    margin-left: 70px;
     min-width: 40px;
     min-height: 40px;
     height: 4vw;
     width: 4vw;
   }
 }
+
+.unshow{
+  display: none;
+}
+
+@media (max-width: 1245px) {
+  .floor-plan__body{
+    min-height: 650px;
+  }
+}
+
+@media (max-width: 960px) {
+  .show{
+    display: none;
+  }
+  .unshow{
+    display: flex;
+  }
+  .floor-plan__body{
+    display: flex;
+    flex-direction: column;
+    min-height: 650px;
+  }
+  .floor-plan__body-card_info{
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 100%;
+
+    padding-right: 20px;
+    gap: 10px;
+
+    background: $one-base-darker-color;
+
+  }
+
+  .floor-plan__body-card_text{
+
+    font-size: 16px !important;
+
+  }
+
+  .floor-plan__body-card_item{
+    height: max-content;
+    margin: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
 </style>

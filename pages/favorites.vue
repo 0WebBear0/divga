@@ -17,7 +17,7 @@
       <!-- cards -->
       <div class="favorite__body_cards" v-if="typeView">
         <div v-for="item in cardInfo">
-          <CardVertical :card-info="item" class="parameters__body__cards__vertical-card"/>
+          <CardVertical :card-info="item" class="favorite__body__cards__vertical-card"/>
         </div>
         <PaginatorHorizontal :params="[{name: 1, selected: false},{name: 2, selected: true},{name: 3, selected: false},]" />
       </div>
@@ -173,7 +173,6 @@ export default {
 
       cursor: pointer;
     }
-
     &_cards{
       width: 100%;
 
@@ -183,6 +182,7 @@ export default {
       flex-direction: row;
       flex-wrap: wrap;
       gap: 20px;
+
 
     }
 
@@ -224,7 +224,9 @@ export default {
     }
   }
 }
-
+.favorite__body__cards__vertical-card{
+  display: contents;
+}
 @media (max-width: 660px) {
   .favorite__body_cards{
     display: flex;

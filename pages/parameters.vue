@@ -327,6 +327,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .parameters{
   display: flex;
   flex-direction: column;
@@ -363,6 +364,7 @@ export default {
         gap: 20px;
 
         &-card{
+          display: contents;
           height: 100%;
         }
       }
@@ -426,6 +428,10 @@ export default {
   .parameters__body__filter{
     width: 30%;
     min-width: 300px;
+  }
+  .parameters__header{
+    width: 100%;
+    flex: 2;
   }
 }
 
